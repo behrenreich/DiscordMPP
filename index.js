@@ -28,7 +28,7 @@ var chatInt1 = setInterval(function () {
 }, 2050);
 
 var chatInt2 = setInterval(function () {
-    var msg = chat_buffer.shift();
+    var msg = d_chat_buffer.shift();
     if (msg) bot.channels.get(msg.split(" ")[0]).sendMessage(msg.substring(msg.split(" ")[0].length))
 }, 2050);
 function sendChat(msg) {
@@ -133,7 +133,7 @@ bot.on("ready", () => {
     bot.user.setGame(`on ${bot.guilds.size} servers`);
 })
 bot.on("ready", () => {
-    var dop = ["251985222915194881"]
+    var dop = ["251985222915194881","210605340201451521","209015289990348800","362315641161515008"]
     bot.on("message", function (message) {
         function cdChat(msg) {
             if (lang == "en") {
