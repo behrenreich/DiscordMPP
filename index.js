@@ -53,14 +53,14 @@ function dChat(id, msg) {
         msg.match(/.{1,508}/g).forEach(function (x, i) {
             if (x === "") return;
             if (i !== 0) x = x;
-            chat_buffer.push(id + " " + x);
+            d_chat_buffer.push(id + " " + x);
         })
     } else {
         translate(msg, lang).then(oof => {
             oof.match(/.{1,508}/g).forEach(function (x, i) {
                 if (x === "") return;
                 if (i !== 0) x = x;
-                chat_buffer.push(id + " " + x)
+                d_chat_buffer.push(id + " " + x)
             })
         })
     }
