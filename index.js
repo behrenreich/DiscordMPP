@@ -2,15 +2,15 @@ const MPP = require("anon64-mpp")
 
 const Discord = require("discord.js");
 
-const token = require("./secret.json")
+//const token = require("./secret.json")
 
 const translate = require('translate');
 
 var Client = require("./AMPP.js/Client.js")
 
-translate.engine = "yandex"
+//translate.engine = "yandex"
 
-translate.key = token.yand
+//translate.key = token.yand
 
 var bot = new Discord.Client();
 
@@ -136,4 +136,4 @@ bot.on("ready", () => {
         }
     })
 })
-bot.login(TOKEN)
+bot.login(process.env.BOT_TOKEN)
