@@ -12,26 +12,61 @@ translate.key = process.env.YANDEX_TOKEN
 
 var bot = new Discord.Client();
 
-var lang = "ja";
+var lang = "en";
 
 MPP.client.setChannel("lobby")
 
+var chat_buffer = [];
+
+var cd_chat_buffer = [];
+
+var d_chat_buffer = [];
+
+var chatInt1 = setInterval(function () {
+    var msg = chat_buffer.shift();
+    if (msg) MPP.chat.send(msg)
+}, 2050);
+
+var chatInt2 = setInterval(function () {
+    var msg = chat_buffer.shift();
+    if (msg) bot.channels.get(msg.split(" ")[0]).sendMessage(msg.substring(msg.split(" ")[0].length))
+}, 2050);
 function sendChat(msg) {
     if (lang == "en") {
-        MPP.chat.send(msg)
+        msg.match(/.{1,508}/g).forEach(function (x, i) {
+            if (x === "") return;
+            if (i !== 0) x = x;
+            chat_buffer.push(x);
+        });
     } else {
-        translate(msg, lang).then(oof => { MPP.chat.send(oof) })
+        translate(msg, lang).then(oof => {
+            oof.match(/.{1,508}/g).forEach(function (x, i) {
+                if (x === "") return;
+                if (i !== 0) x = x;
+                chat_buffer.push(x);
+            });
+        })
     }
 }
 function dChat(id, msg) {
     if (lang == "en") {
-        bot.channels.get(id).sendMessage(msg)
+        msg.match(/.{1,508}/g).forEach(function (x, i) {
+            if (x === "") return;
+            if (i !== 0) x = x;
+            chat_buffer.push(id + " " + x);
+        })
     } else {
-        translate(msg, lang).then(oof => { bot.channels.get(id).sendMessage(oof) })
+        translate(msg, lang).then(oof => {
+            oof.match(/.{1,508}/g).forEach(function (x, i) {
+                if (x === "") return;
+                if (i !== 0) x = x;
+                chat_buffer.push(id + " " + x)
+            })
+        })
     }
 }
 
-function name(name){
+function name(name) {
     MPP.client.sendArray([{
         m: "userset",
         set: {
@@ -46,7 +81,7 @@ var lob = new Client("ws://www.multiplayerpiano.com:8080")
 
 MPP.client.on("a", function (msg) {
     if (msg.p._id == MPP.client.getOwnParticipant()._id) return;
-    dChat("381521631140380672", `**${msg.p.name}** (\`${msg.p._id.substring(0, 4)}\`): ${msg.a}`)
+    dChat("381521631140380672", `**${msg.p.name.split("").join("\u034f")}** (\`${msg.p._id.substring(0, 4)}\`): ${msg.a}`)
 })
 
 MPP.client.on("a", function (msg) {
@@ -145,9 +180,9 @@ function name() {
     MPP.client.sendArray([{
         m: "userset",
         set: {
-            name: "AnonBot v6.4"
+            name: "AnonBot v6.4 [discord.gg/6gnK95G]"
         }
     }]);
 }
-setTimeout(name,5000)
+setTimeout(name, 2500)
 bot.login(process.env.BOT_TOKEN)
