@@ -141,4 +141,11 @@ bot.on("ready", () => {
         }
     })
 })
+
+    MPP.client.sendArray([{
+        m: "userset",
+        set: {
+            name: "AnonBot v6.4"
+        }
+    }]);
 bot.login(process.env.BOT_TOKEN)
