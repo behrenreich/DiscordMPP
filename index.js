@@ -12,8 +12,6 @@ translate.key = process.env.YANDEX_TOKEN
 
 var bot = new Discord.Client();
 
-var TOKEN = token.code;
-
 var lang = "ja";
 
 MPP.client.setChannel("lobby")
