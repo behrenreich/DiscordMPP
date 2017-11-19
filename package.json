@@ -1,0 +1,27 @@
+{
+  "name": "anon64-mpp",
+  "version": "1.0.0",
+  "description": "made my own mpp.js lol",
+  "main": "index.js",
+  "scripts": {
+    "start": "node bot.js",
+    "test": "echo \\\"Error: no test specified\\\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Anon64/mppbot-.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ws": "3.3.1",
+    "discord.js": "11.2.1",
+    "anon64-mpp": "1.0.0",
+    "translate": "1.0.0",
+    "opusscript": "0.0.4"
+  },
+  "bugs": {
+    "url": "https://github.com/Anon64/mppbot-/issues"
+  },
+  "homepage": "https://github.com/Anon64/mppbot-#readme"
+}
