@@ -18,7 +18,8 @@
     "discord.js": "11.2.1",
     "anon64-mpp": "1.0.0",
     "translate": "1.0.0",
-    "opusscript": "0.0.4"
+    "opusscript": "0.0.4",
+    "request":"2.83.0"
   },
   "bugs": {
     "url": "https://github.com/Anon64/mppbot-/issues"
