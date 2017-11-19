@@ -30,6 +30,15 @@ function dChat(id, msg) {
         translate(msg, lang).then(oof => { bot.channels.get(id).sendMessage(oof) })
     }
 }
+
+function name(name){
+    MPP.client.sendArray([{
+        m: "userset",
+        set: {
+            name: name
+        }
+    }]);
+}
 var op = ["d55bf273f64f37c5691f3bbb"]
 var cmdChar = ">"
 
