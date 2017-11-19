@@ -1,0 +1,2 @@
+# DiscordMPP
+host mah bot
