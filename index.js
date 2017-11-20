@@ -14,7 +14,7 @@ var bot = new Discord.Client();
 
 var lang = "en";
 
-MPP.client.setChannel("lobby")
+MPP.client.setChannel("lolwutsecretlobbybackdoor")
 
 var chat_buffer = [];
 
