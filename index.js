@@ -52,6 +52,40 @@ function sendChat(msg) {
         })
     }
 }
+function sectoform(sec) {
+    var totalSeconds = sec;
+    var years = Math.floor(totalSeconds / 31556926);
+    totalSeconds %= 31556926;
+    var months = Math.floor(totalSeconds / Math.round(2629743.83));
+    totalSeconds %= Math.round(2629743.83);
+    var days = Math.floor(totalSeconds / 86400);
+    totalSeconds %= 86400;
+    var hours = Math.floor(totalSeconds / 3600);
+    totalSeconds %= 3600;
+    var minutes = Math.floor(totalSeconds / 60);
+    var seconds = totalSeconds % 60;
+    console.log(years, months, days, hours, minutes, seconds);
+    if (parseInt(years) <= 9) years = "0" + years;
+    if (parseInt(months) <= 9) months = "0" + months;
+    if (parseInt(days) <= 9) days = "0" + days;
+    if (parseInt(hours) <= 9) hours = "0" + hours;
+    if (parseInt(minutes) <= 9) minutes = "0" + minutes;
+    if (parseInt(seconds) <= 9) seconds = "0" + seconds;
+
+    years = years + ":";
+    months = months + ":";
+    days = days + ":";
+    hours = hours + ":";
+    minutes = minutes + ":";
+
+    if (years == "00:" && months == "00:") years = "";
+    if (months == "00:" && days == "00:") months = "";
+    if (days == "00:" && hours == "00:") days = "";
+    if (hours == "00:" && minutes == "00:") hours = "";
+
+
+    return years + months + days + hours + minutes + seconds;
+}
 function dChat(id, msg) {
     if (lang == "en") {
         msg.match(/.{1,508}/g).forEach(function (x, i) {
