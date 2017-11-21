@@ -145,22 +145,24 @@ function name(name) {
 }
 var op = ["d55bf273f64f37c5691f3bbb"]
 var cmdChar = ">"
-    var lob = new Client("ws://www.multiplayerpiano.com:8080");
-    var tyeet = new Client("ws://www.multiplayerpiano.com:8080");
-    lob.setChannel("lolwutsecretlobbybackdoor");
-    lob.start();
+var lob = new Client("ws://www.multiplayerpiano.com:8080");
+var tyeet = new Client("ws://www.multiplayerpiano.com:8080");
+lob.start();
+tyeet.start();
+setTimeout(function () {
     tyeet.setChannel("test/yeet");
-    tyeet.start();
+    lob.setChannel("lolwutsecretlobbybackdoor");
+}, 5000)
 
-    lob.on("a", function (msg) {
-        if (msg.p._id == MPP.client.getOwnParticipant()._id) return;
-        dChat("381521631140380672", `**${msg.p.name.split("").join("\u034f")}** (\`${msg.p._id.substring(0, 4)}\`): ${msg.a}`)
-    })
+lob.on("a", function (msg) {
+    if (msg.p._id == MPP.client.getOwnParticipant()._id) return;
+    dChat("381521631140380672", `**${msg.p.name.split("").join("\u034f")}** (\`${msg.p._id.substring(0, 4)}\`): ${msg.a}`)
+})
 
-    tyeet.on("a", function (msg) {
-        if (msg.p._id == MPP.client.getOwnParticipant()._id) return;
-        dChat("382622516771946499", `**${msg.p.name.split("").join("\u034f")}** (\`${msg.p._id.substring(0, 4)}\`): ${msg.a}`)
-    })
+tyeet.on("a", function (msg) {
+    if (msg.p._id == MPP.client.getOwnParticipant()._id) return;
+    dChat("382622516771946499", `**${msg.p.name.split("").join("\u034f")}** (\`${msg.p._id.substring(0, 4)}\`): ${msg.a}`)
+})
 
 MPP.client.on("a", function (msg) {
     var isAdmin = false;
