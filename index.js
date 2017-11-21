@@ -46,7 +46,9 @@ function mouse() {
     if (y == 100 || 0) yn = -yn;
     var xf = x += xn;
     var yf = y += yn;
-    MPP.client.sendArray([{ m: "m", xf, yf }]);
+    var xff = parseInt(MPP.client.getOwnParticipant().x)+xf;
+    var yff = parseInt(MPP.client.getOwnParticipant().y)+yf
+    MPP.client.sendArray([{ m: "m",xff, yff}]);
     setTimeout(mouse, delay)
 }
 
