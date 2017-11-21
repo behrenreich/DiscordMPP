@@ -145,7 +145,6 @@ function name(name) {
 }
 var op = ["d55bf273f64f37c5691f3bbb"]
 var cmdChar = ">"
-setTimeout(function () {
     var lob = new Client("ws://www.multiplayerpiano.com:8080");
     var tyeet = new Client("ws://www.multiplayerpiano.com:8080");
     lob.setChannel("lolwutsecretlobbybackdoor");
@@ -162,7 +161,6 @@ setTimeout(function () {
         if (msg.p._id == MPP.client.getOwnParticipant()._id) return;
         dChat("382622516771946499", `**${msg.p.name.split("").join("\u034f")}** (\`${msg.p._id.substring(0, 4)}\`): ${msg.a}`)
     })
-}, 5000)
 
 MPP.client.on("a", function (msg) {
     var isAdmin = false;
