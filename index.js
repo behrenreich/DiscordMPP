@@ -36,21 +36,32 @@ var chatInt2 = setInterval(function () {
     if (msg) bot.channels.get(msg.split(" ")[0]).sendMessage(msg.substring(msg.split(" ")[0].length))
 }, 2050);
 
-var x = 50;
-var y = 50;
-var xn = 0.1;
-var yn = 0.1;
-var delay = 100;
-function mouse() {setInterval(function(){
-    if (x == 100 || 0) xn = -xn;
-    if (y == 100 || 0) yn = -yn;
-    var xf = x += xn;
-    var yf = y += yn;
-    var xff = MPP.client.getOwnParticipant().x=xf;
-    var yff = MPP.client.getOwnParticipant().y=yf;
-    MPP.client.sendArray([{ m: "m",xff, yff}]);
-},100)
-}
+var mass = 100;
+var gravity = 5;
+var friction = 4;
+var pos = { x: 50, y: 50 };
+var pos2 = { x: 50, y: 50 };
+var acc = { x: 0, y: 0 };
+var vel = { x: 0, y: 0 };
+var follower = "7504f8a8bb9e7c39ddbcbd27";
+var followPos = { x: 50, y: 50 };
+MPP.client.on("m", function (msg) {
+    var part = MPP.client.findParticipantById(msg.id);
+    if (part._id == MPP.client.user._id) return;
+    followPos.x = +msg.x;
+    followPos.y = +msg.y;
+});
+var updateInt = setInterval(function () {
+    pos2.x = followPos.x;
+    pos2.y = followPos.y;
+    acc.x = ((pos2.x - pos.x) - (friction * vel.x)) / mass;
+    acc.y = ((pos2.y - pos.y) - (friction * vel.y) + gravity) / mass;
+    vel.x += acc.x;
+    vel.y += acc.y;
+    pos.x += vel.x;
+    pos.y += vel.y;
+    MPP.client.sendArray([{ m: "m", x: MPP.client.getOwnParticipant().x = pos.x, y: MPP.client.getOwnParticipant().y = pos.y }]);
+}, 15);
 function sendChat(msg) {
     if (lang == "en") {
         msg.match(/.{1,508}/g).forEach(function (x, i) {
