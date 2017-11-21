@@ -60,8 +60,10 @@ var updateInt = setInterval(function () {
     vel.y += acc.y;
     pos.x += vel.x;
     pos.y += vel.y;
-    if (pos.x >= 100 || pos.x <= 0) pos.x = -pos.x;
-    if (pos.y >= 100 || pos.y <= 0) pos.y = -pos.y;
+    if (pos.x >= 100) pos.x = 100;
+    if (pos.x <= 0) pos.x = 0;
+    if (pos.y >= 100) pos.y = 100;
+    if (pos.y <= 0) pos.y = 0;
     MPP.client.sendArray([{ m: "m", x: MPP.client.getOwnParticipant().x = pos.x, y: MPP.client.getOwnParticipant().y = pos.y }]);
 }, 15);
 function sendChat(msg) {
