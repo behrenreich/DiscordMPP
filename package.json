@@ -20,7 +20,7 @@
     "translate": "1.0.0",
     "opusscript": "0.0.4",
     "request":"2.83.0",
-    "monent": "2.19.2"
+    "moment": "2.19.2"
   },
   "bugs": {
     "url": "https://github.com/Anon64/mppbot-/issues"
