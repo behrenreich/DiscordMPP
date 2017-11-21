@@ -148,6 +148,10 @@ var cmdChar = ">"
 
 var lob = new Client("ws://www.multiplayerpiano.com:8080")
 var tyeet = new Client("ws://www.multiplayerpiano.com:8080")
+lob.setChannel("lolwutsecretlobbybackdoor")
+lob.start()
+tyeet.setChannel("test/yeet")
+tyeet.start()
 
 lob.on("a", function (msg) {
     if (msg.p._id == MPP.client.getOwnParticipant()._id) return;
