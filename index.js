@@ -223,7 +223,7 @@ function name() {
             name: names[count++]
         }
     }]);
-    if(count>=names.length) count = 0;
+    if(count>=Object.keys(names).length) count = 0;
 }
 setTimeout(name, 2500)
 bot.login(process.env.BOT_TOKEN)
