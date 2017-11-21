@@ -4,6 +4,8 @@ const Discord = require("discord.js");
 
 const translate = require('translate');
 
+const time = require("moment")
+
 var Client = require("./AMPP.js/Client.js")
 
 translate.engine = "yandex"
