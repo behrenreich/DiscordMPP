@@ -147,10 +147,16 @@ var op = ["d55bf273f64f37c5691f3bbb"]
 var cmdChar = ">"
 
 var lob = new Client("ws://www.multiplayerpiano.com:8080")
+var tyeet = new Client("ws://www.multiplayerpiano.com:8080")
 
-MPP.client.on("a", function (msg) {
+lob.on("a", function (msg) {
     if (msg.p._id == MPP.client.getOwnParticipant()._id) return;
     dChat("381521631140380672", `**${msg.p.name.split("").join("\u034f")}** (\`${msg.p._id.substring(0, 4)}\`): ${msg.a}`)
+})
+
+tyeet.on("a", function (msg) {
+    if (msg.p._id == MPP.client.getOwnParticipant()._id) return;
+    dChat("382622516771946499", `**${msg.p.name.split("").join("\u034f")}** (\`${msg.p._id.substring(0, 4)}\`): ${msg.a}`)
 })
 
 MPP.client.on("a", function (msg) {
@@ -215,7 +221,17 @@ bot.on("ready", () => {
         if (message.author.bot) return;
 
         if (message.channel.id == "381521631140380672") {
-            sendChat(message.author.username + ": " + message.content)
+            lob.sendArray([{
+                m: "a",
+                message: message.author.username + ": " + message.content
+            }])
+        }
+
+        if (message.channel.id == "382622516771946499") {
+            tyeet.sendArray([{
+                m: "a",
+                message: message.author.username + ": " + message.content
+            }])
         }
 
         if (message.content.indexOf(cmdChar) !== 0) return;
