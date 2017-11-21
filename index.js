@@ -216,7 +216,7 @@ bot.on("ready", () => {
 })
 count = 0;
 function name() {
-    names = {0:"AnonBot v6.4 [discord.gg/6gnK95G]",1:`AnonBot v6.4 Uptime [${sectoform(Math.round(Date.now()/1000)-start)}]`}
+    names = {0:"AnonBot v6.4 [discord.gg/6gnK95G]",1:`Uptime: ${sectoform(Math.round(Date.now()/1000)-start)}`}
     MPP.client.sendArray([{
         m: "userset",
         set: {
