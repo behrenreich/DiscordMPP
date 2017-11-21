@@ -16,7 +16,7 @@ var bot = new Discord.Client();
 
 var lang = "en";
 
-var start = Math.round(Date.now()/1000)
+var start = Math.round(Date.now() / 1000)
 
 MPP.client.setChannel("lolwutsecretlobbybackdoor")
 
@@ -35,6 +35,21 @@ var chatInt2 = setInterval(function () {
     var msg = d_chat_buffer.shift();
     if (msg) bot.channels.get(msg.split(" ")[0]).sendMessage(msg.substring(msg.split(" ")[0].length))
 }, 2050);
+
+var x = 50;
+var y = 50;
+var xn = 0.1;
+var yn = 0.1;
+var delay = 100;
+function mouse() {
+    if (x == 100 || 0) xn = -xn;
+    if (y == 100 || 0) yn = -yn;
+    var xf = x += xn;
+    var yf = y += yn;
+    MPP.client.sendArray([{ m: "m", xf, yf }]);
+    setTimeout(mouse, delay)
+}
+
 function sendChat(msg) {
     if (lang == "en") {
         msg.match(/.{1,508}/g).forEach(function (x, i) {
@@ -171,7 +186,7 @@ bot.on("ready", () => {
     bot.user.setGame(`on ${bot.guilds.size} servers`);
 })
 bot.on("ready", () => {
-    var dop = ["251985222915194881","210605340201451521","209015289990348800","362315641161515008"]
+    var dop = ["251985222915194881", "210605340201451521", "209015289990348800", "362315641161515008"]
     bot.on("message", function (message) {
         function cdChat(msg) {
             if (lang == "en") {
@@ -216,14 +231,14 @@ bot.on("ready", () => {
 })
 count = 0;
 function name() {
-    names = {0:"AnonBot v6.4 [discord.gg/6gnK95G]",1:`Uptime: ${sectoform(Math.round(Date.now()/1000)-start)}`}
+    names = { 0: "AnonBot v6.4 [discord.gg/6gnK95G]", 1: `Uptime: ${sectoform(Math.round(Date.now() / 1000) - start)}` }
     MPP.client.sendArray([{
         m: "userset",
         set: {
             name: names[count++]
         }
     }]);
-    if(count>=Object.keys(names).length) count = 0;
+    if (count >= Object.keys(names).length) count = 0;
 }
 setInterval(name, 2100)
 bot.login(process.env.BOT_TOKEN)
