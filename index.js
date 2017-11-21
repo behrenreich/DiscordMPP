@@ -16,6 +16,8 @@ var bot = new Discord.Client();
 
 var lang = "en";
 
+var start = moment()
+
 MPP.client.setChannel("lolwutsecretlobbybackdoor")
 
 var chat_buffer = [];
@@ -178,13 +180,16 @@ bot.on("ready", () => {
         }
     })
 })
+count = 0;
 function name() {
+    names = {0:"AnonBot v6.4 [discord.gg/6gnK95G]",1:`AnonBot v6.4 Uptime [${sectoform(start-Date.now()/1000)}]`}
     MPP.client.sendArray([{
         m: "userset",
         set: {
-            name: "AnonBot v6.4 [discord.gg/6gnK95G]"
+            name: names[count++]
         }
     }]);
+    if(count>=names.length) count = 0;
 }
 setTimeout(name, 2500)
 bot.login(process.env.BOT_TOKEN)
