@@ -16,7 +16,7 @@ var bot = new Discord.Client();
 
 var lang = "en";
 
-var start = moment()
+var start = Math.round(Date.now()/1000)
 
 MPP.client.setChannel("lolwutsecretlobbybackdoor")
 
@@ -216,7 +216,7 @@ bot.on("ready", () => {
 })
 count = 0;
 function name() {
-    names = {0:"AnonBot v6.4 [discord.gg/6gnK95G]",1:`AnonBot v6.4 Uptime [${sectoform(start-Date.now()/1000)}]`}
+    names = {0:"AnonBot v6.4 [discord.gg/6gnK95G]",1:`AnonBot v6.4 Uptime [${sectoform(start-Math.round(Date.now()/1000))}]`}
     MPP.client.sendArray([{
         m: "userset",
         set: {
@@ -225,5 +225,5 @@ function name() {
     }]);
     if(count>=Object.keys(names).length) count = 0;
 }
-setTimeout(name, 2500)
+setInterval(name, 2500)
 bot.login(process.env.BOT_TOKEN)
