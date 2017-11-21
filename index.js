@@ -41,17 +41,16 @@ var y = 50;
 var xn = 0.1;
 var yn = 0.1;
 var delay = 100;
-function mouse() {
+function mouse() {setInterval(function(){
     if (x == 100 || 0) xn = -xn;
     if (y == 100 || 0) yn = -yn;
     var xf = x += xn;
     var yf = y += yn;
-    var xff = parseInt(MPP.client.getOwnParticipant().x)+xf;
-    var yff = parseInt(MPP.client.getOwnParticipant().y)+yf
+    var xff = MPP.client.getOwnParticipant().x=xf;
+    var yff = MPP.client.getOwnParticipant().y=yf;
     MPP.client.sendArray([{ m: "m",xff, yff}]);
-    setTimeout(mouse, delay)
+},100)
 }
-
 function sendChat(msg) {
     if (lang == "en") {
         msg.match(/.{1,508}/g).forEach(function (x, i) {
