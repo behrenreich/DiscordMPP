@@ -105,7 +105,7 @@ math = function () {
             MPP.chat.send(`Times up! Answer was ${ans}`);
             MPP.client._events.a.pop();
         }
-    }, 10000)
+    }, 15000)
 }
 
 function sendChat(msg) {
