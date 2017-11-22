@@ -92,7 +92,8 @@ math = function () {
     rand2 = randNum(0, 100);
     mathe = maths.random();
     ans = eval(rand + mathe + rand2);
-    MPP.chat.send(`Math: what is ${rand} ${mathe} ${rand2} ?`);
+    pts = randNum(15, 130);
+    MPP.chat.send(`Math: what is ${rand} ${mathe} ${rand2} ? >${pts}pts<`);
     MPP.client.on("a", function (m) {
         if (m.a == ans) {
             MPP.chat.send("Math: correct!");
