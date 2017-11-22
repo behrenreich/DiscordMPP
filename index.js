@@ -91,7 +91,9 @@ function check(id) {
     Object.keys(people).forEach((user) => { if (user == id) temp = true; });
     return temp;
 }
+tried = false;
 math = function () {
+    tried = true;
     maths = "/*-+".split("");
     rand = randNum(0, 100);
     a = false;
@@ -107,6 +109,7 @@ math = function () {
             }
             MPP.chat.send("Math: correct!");
             a = true;
+            tried = false;
             MPP.client._events.a.pop();
             people[m.p._id].pts += pts;
         }
@@ -263,6 +266,9 @@ MPP.client.on("a", function (msg) {
             }
             var pt = people[msg.p._id].pts == 1 ? "point" : "points"
             sendChat(`You, ${msg.p.name}, have ${people[msg.p._id].pts} ${pt}`)
+        } else if (cmd == cmdChar + "math") {
+            if (tried) return;
+            math()
         }
 });
 
