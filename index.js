@@ -14,7 +14,7 @@ translate.key = process.env.YANDEX_TOKEN
 
 var bot = new Discord.Client();
 
-var lang = "en";
+var lang = "ja";
 
 var start = Math.round(Date.now() / 1000)
 
