@@ -118,6 +118,7 @@ math = function () {
         if (!a) {
             MPP.chat.send(`Times up! Answer was ${ans}`);
             MPP.client._events.a.pop();
+            tried = false;
         }
     }, 15000)
 }
