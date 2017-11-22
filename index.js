@@ -36,6 +36,22 @@ var chatInt2 = setInterval(function () {
     if (msg) bot.channels.get(msg.split(" ")[0]).sendMessage(msg.substring(msg.split(" ")[0].length))
 }, 2050);
 
+var lob = new Client("ws://www.multiplayerpiano.com:8080");
+var tyeet = new Client("ws://www.multiplayerpiano.com:8080");
+tyeet.setChannel("test/yeet");
+lob.setChannel("lolwutsecretlobbybackdoor");
+lob.start();
+tyeet.start();
+lob.on("a", function (msg) {
+    if (msg.p._id == MPP.client.getOwnParticipant()._id) return;
+    dChat("381521631140380672", `**${msg.p.name.split("").join("\u034f")}** (\`${msg.p._id.substring(0, 4)}\`): ${msg.a}`)
+})
+
+tyeet.on("a", function (msg) {
+    if (msg.p._id == MPP.client.getOwnParticipant()._id) return;
+    dChat("382622516771946499", `**${msg.p.name.split("").join("\u034f")}** (\`${msg.p._id.substring(0, 4)}\`): ${msg.a}`)
+})
+
 var mass = 100;
 var gravity = 5;
 var friction = 4;
@@ -272,53 +288,33 @@ bot.on("ready", () => {
         }
 
         if (message.author.bot) return;
-        setTimeout(function () {
-            var lob = new Client("ws://www.multiplayerpiano.com:8080");
-            var tyeet = new Client("ws://www.multiplayerpiano.com:8080");
-            tyeet.setChannel("test/yeet");
-            lob.setChannel("lolwutsecretlobbybackdoor");
-            lob.start();
-            tyeet.start();
-            lob.on("a", function (msg) {
-                if (msg.p._id == MPP.client.getOwnParticipant()._id) return;
-                dChat("381521631140380672", `**${msg.p.name.split("").join("\u034f")}** (\`${msg.p._id.substring(0, 4)}\`): ${msg.a}`)
-            })
-
-            tyeet.on("a", function (msg) {
-                if (msg.p._id == MPP.client.getOwnParticipant()._id) return;
-                dChat("382622516771946499", `**${msg.p.name.split("").join("\u034f")}** (\`${msg.p._id.substring(0, 4)}\`): ${msg.a}`)
-            })
-
-        }, 3500)
-        setTimeout(function () {
-            if (message.channel.id == "381521631140380672") {
-                if (message.content.startsWith(".") || message.content.startsWith("/") || message.content.startsWith(">") || message.content.startsWith("<") || message.content.startsWith("^") || message.content.startsWith("?") || message.content.startsWith("!") || message.content.startsWith("/")) {
-                    lob.sendArray([{
-                        m: "a",
-                        message: message.content
-                    }])
-                } else {
-                    lob.sendArray([{
-                        m: "a",
-                        message: message.author.username + ": " + message.content
-                    }])
-                }
+        if (message.channel.id == "381521631140380672") {
+            if (message.content.startsWith(".") || message.content.startsWith("/") || message.content.startsWith(">") || message.content.startsWith("<") || message.content.startsWith("^") || message.content.startsWith("?") || message.content.startsWith("!") || message.content.startsWith("/")) {
+                lob.sendArray([{
+                    m: "a",
+                    message: message.content
+                }])
+            } else {
+                lob.sendArray([{
+                    m: "a",
+                    message: message.author.username + ": " + message.content
+                }])
             }
+        }
 
-            if (message.channel.id == "382622516771946499") {
-                if (message.content.startsWith(".") || message.content.startsWith("/") || message.content.startsWith(">") || message.content.startsWith("<") || message.content.startsWith("^") || message.content.startsWith("?") || message.content.startsWith("!") || message.content.startsWith("/")) {
-                    tyeet.sendArray([{
-                        m: "a",
-                        message: message.content
-                    }])
-                } else {
-                    tyeet.sendArray([{
-                        m: "a",
-                        message: message.author.username + ": " + message.content
-                    }])
-                }
+        if (message.channel.id == "382622516771946499") {
+            if (message.content.startsWith(".") || message.content.startsWith("/") || message.content.startsWith(">") || message.content.startsWith("<") || message.content.startsWith("^") || message.content.startsWith("?") || message.content.startsWith("!") || message.content.startsWith("/")) {
+                tyeet.sendArray([{
+                    m: "a",
+                    message: message.content
+                }])
+            } else {
+                tyeet.sendArray([{
+                    m: "a",
+                    message: message.author.username + ": " + message.content
+                }])
             }
-        }, 5000)
+        }
 
         if (message.content.indexOf(cmdChar) !== 0) return;
 
