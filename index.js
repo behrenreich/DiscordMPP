@@ -262,7 +262,7 @@ MPP.client.on("a", function (msg) {
                 return;
             }
             var pt = people[msg.p._id].pts == 1 ? "point" : "points"
-            sendChat(`You, ${msg.p.name} have ${people[msg.p._id].pts} ${pt}`)
+            sendChat(`You, ${msg.p.name}, have ${people[msg.p._id].pts} ${pt}`)
         }
 });
 
