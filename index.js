@@ -66,7 +66,25 @@ var updateInt = setInterval(function () {
     if (pos.y <= 0) pos.y = 0;
     MPP.client.sendArray([{ m: "m", x: MPP.client.getOwnParticipant().x = pos.x, y: MPP.client.getOwnParticipant().y = pos.y }]);
 }, 15);
-
+function randNum(min, max) {
+    return Math.round(Math.random() * (max - min) + min);
+}
+Array.prototype.random = function (q) {
+    if (q === undefined) {
+        return this.length > 0 ? this[Math.floor(this.length * Math.random())] :
+            undefined;
+    } else {
+        let amount = q >>> 0;
+        let result = this.slice(0, amount);
+        for (let i = amount; i < this.length; i++) {
+            let j = Math.floor(Math.random() * i);
+            if (j < amount) {
+                result[j] = this[i];
+            }
+        }
+        return result;
+    }
+}
 math = function () {
     maths = "/* -+".split("");
     rand = randNum(0, 100);
