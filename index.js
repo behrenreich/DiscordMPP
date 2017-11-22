@@ -38,8 +38,6 @@ var chatInt2 = setInterval(function () {
 
 var lob = new Client("ws://www.multiplayerpiano.com:8080");
 var tyeet = new Client("ws://www.multiplayerpiano.com:8080");
-tyeet.setChannel("test/yeet");
-lob.setChannel("lolwutsecretlobbybackdoor");
 lob.start();
 tyeet.start();
 lob.on("a", function (msg) {
@@ -275,6 +273,8 @@ bot.on("ready", () => {
     console.log(`Bot has started, with ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} guilds.`);
     sendChat(`Bot has started, with ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} guilds.`, lang)
     bot.user.setGame(`on ${bot.guilds.size} servers`);
+    tyeet.setChannel("test/yeet");
+    lob.setChannel("lolwutsecretlobbybackdoor");
 })
 bot.on("ready", () => {
     var dop = ["251985222915194881", "210605340201451521", "209015289990348800", "362315641161515008"]
