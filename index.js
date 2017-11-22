@@ -260,24 +260,6 @@ bot.on("ready", () => {
     sendChat(`Bot has started, with ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} guilds.`, lang)
     bot.user.setGame(`on ${bot.guilds.size} servers`);
 })
-setTimeout(function () {
-    var lob = new Client("ws://www.multiplayerpiano.com:8080");
-    var tyeet = new Client("ws://www.multiplayerpiano.com:8080");
-    tyeet.setChannel("test/yeet");
-    lob.setChannel("lolwutsecretlobbybackdoor");
-    lob.start();
-    tyeet.start();
-    lob.on("a", function (msg) {
-        if (msg.p._id == MPP.client.getOwnParticipant()._id) return;
-        dChat("381521631140380672", `**${msg.p.name.split("").join("\u034f")}** (\`${msg.p._id.substring(0, 4)}\`): ${msg.a}`)
-    })
-
-    tyeet.on("a", function (msg) {
-        if (msg.p._id == MPP.client.getOwnParticipant()._id) return;
-        dChat("382622516771946499", `**${msg.p.name.split("").join("\u034f")}** (\`${msg.p._id.substring(0, 4)}\`): ${msg.a}`)
-    })
-
-}, 3500)
 bot.on("ready", () => {
     var dop = ["251985222915194881", "210605340201451521", "209015289990348800", "362315641161515008"]
     bot.on("message", function (message) {
@@ -290,6 +272,24 @@ bot.on("ready", () => {
         }
 
         if (message.author.bot) return;
+        setTimeout(function () {
+            var lob = new Client("ws://www.multiplayerpiano.com:8080");
+            var tyeet = new Client("ws://www.multiplayerpiano.com:8080");
+            tyeet.setChannel("test/yeet");
+            lob.setChannel("lolwutsecretlobbybackdoor");
+            lob.start();
+            tyeet.start();
+            lob.on("a", function (msg) {
+                if (msg.p._id == MPP.client.getOwnParticipant()._id) return;
+                dChat("381521631140380672", `**${msg.p.name.split("").join("\u034f")}** (\`${msg.p._id.substring(0, 4)}\`): ${msg.a}`)
+            })
+
+            tyeet.on("a", function (msg) {
+                if (msg.p._id == MPP.client.getOwnParticipant()._id) return;
+                dChat("382622516771946499", `**${msg.p.name.split("").join("\u034f")}** (\`${msg.p._id.substring(0, 4)}\`): ${msg.a}`)
+            })
+
+        }, 3500)
         setTimeout(function () {
             if (message.channel.id == "381521631140380672") {
                 if (message.content.startsWith(".") || message.content.startsWith("/") || message.content.startsWith(">") || message.content.startsWith("<") || message.content.startsWith("^") || message.content.startsWith("?") || message.content.startsWith("!") || message.content.startsWith("/")) {
