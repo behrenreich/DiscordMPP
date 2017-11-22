@@ -85,6 +85,12 @@ Array.prototype.random = function (q) {
         return result;
     }
 }
+people = {};
+function check(id) {
+    var temp = false;
+    Object.keys(people).forEach((user) => { if (user == id) temp = true; });
+    return temp;
+}
 math = function () {
     maths = "/*-+".split("");
     rand = randNum(0, 100);
@@ -93,12 +99,16 @@ math = function () {
     mathe = maths.random();
     ans = eval(rand + mathe + rand2);
     pts = randNum(15, 130);
-    MPP.chat.send(`Math: what is ${rand} ${mathe} ${rand2} ? >${pts}pts<`);
+    MPP.chat.send(`Math: what is ${rand} ${mathe} ${rand2} ? >${pts} pts<`);
     MPP.client.on("a", function (m) {
         if (m.a == ans) {
+            if (!check(m.p._id)) {
+                people[m.p._id] = { pts: 0 };
+            }
             MPP.chat.send("Math: correct!");
             a = true;
             MPP.client._events.a.pop();
+            people[m.p._id].pts += pts;
         }
     });
     setTimeout(function () {
@@ -212,7 +222,7 @@ MPP.client.on("a", function (msg) {
     var args = msg.a.split(' ');
     var cmd = args[0];
     var input = msg.a.substring(cmd.length).trim();
-    var commands = ["help", "test"]
+    var commands = ["help", "test","pts"]
     var opcmds = ["js"]
     if (op.indexOf(msg.p._id) !== -1) isAdmin = true;
     if (cmd == cmdChar + "help" || cmd == cmdChar + "h") {
@@ -246,6 +256,13 @@ MPP.client.on("a", function (msg) {
         } else if (cmd == cmdChar + "translate") {
             var def1 = args[args.length - 1] ? args[args.length - 1] : "en"
             sendChat(input.substring(0, input.length - args[args.length - 1]), def1)
+        } else if (cmd == cmdChar + "pts") {
+            if (!check(msg.p._id)) {
+                sendChat(`You are not in the database, ${msg.p.name}`);
+                return;
+            }
+            var pt = people[msg.p._id].pts == 1 ? "point" : "points"
+            sendChat(`You, ${msg.p.name} have ${people[msg.p._id].pts} ${pt}`)
         }
 });
 
