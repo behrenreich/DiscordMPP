@@ -209,19 +209,19 @@ setTimeout(function () {
 
 lob.on("a", function (msg) {
     if (msg.p._id == MPP.client.getOwnParticipant()._id) return;
-    dChat("381521631140380672", `**${msg.p.name.split("").join("\u034f")}** (\`${msg.p._id.substring(0, 4)}\`): ${message.content}`)
+    dChat("381521631140380672", `**${msg.p.name.split("").join("\u034f")}** (\`${msg.p._id.substring(0, 4)}\`): ${msg.a}`)
 })
 
 tyeet.on("a", function (msg) {
     if (msg.p._id == MPP.client.getOwnParticipant()._id) return;
-    dChat("382622516771946499", `**${msg.p.name.split("").join("\u034f")}** (\`${msg.p._id.substring(0, 4)}\`): ${message.content}`)
+    dChat("382622516771946499", `**${msg.p.name.split("").join("\u034f")}** (\`${msg.p._id.substring(0, 4)}\`): ${msg.a}`)
 })
 
 MPP.client.on("a", function (msg) {
     var isAdmin = false;
-    var args = message.content.split(' ');
+    var args = msg.a.split(' ');
     var cmd = args[0];
-    var input = message.content.substring(cmd.length).trim();
+    var input = msg.a.substring(cmd.length).trim();
     var commands = ["help", "test", "pts", "math"]
     var opcmds = ["js"]
     if (op.indexOf(msg.p._id) !== -1) isAdmin = true;
@@ -291,12 +291,11 @@ bot.on("ready", () => {
                     m: "a",
                     message: message.content
                 }])
-            } else {
-                lob.sendArray([{
-                    m: "a",
-                    message: message.author.username + ": " + message.content
-                }])
             }
+            lob.sendArray([{
+                m: "a",
+                message: message.author.username + ": " + message.content
+            }])
         }
 
         if (message.channel.id == "382622516771946499") {
@@ -305,12 +304,11 @@ bot.on("ready", () => {
                     m: "a",
                     message: message.content
                 }])
-            } else {
-                tyeet.sendArray([{
-                    m: "a",
-                    message: message.author.username + ": " + message.content
-                }])
             }
+            tyeet.sendArray([{
+                m: "a",
+                message: message.author.username + ": " + message.content
+            }])
         }
 
         if (message.content.indexOf(cmdChar) !== 0) return;
@@ -342,7 +340,7 @@ bot.on("ready", () => {
 })
 count = 0;
 function name() {
-    names = { 0: `AnonBot v6.4 [discord.gg/6gnK95G]`, 1: `Uptime: ${sectoform(Math.round(Date.now() / 1000) - start)}`, 2: `AnonBot v6.4 (${cmdChar}help)` }
+    names = { 0: `AnonBot v6.4 [discord.gg/6gnK95G]`, 1: `Uptime: ${sectoform(Math.round(Date.now() / 1000) - start)}`, 2: `AnonBot v6.4 [${cmdChar}help]` }
     MPP.client.sendArray([{
         m: "userset",
         set: {
