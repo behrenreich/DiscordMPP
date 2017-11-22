@@ -14,7 +14,7 @@ translate.key = process.env.YANDEX_TOKEN
 
 var bot = new Discord.Client();
 
-var lang = "ru";
+var lang = "ja";
 
 var start = Math.round(Date.now() / 1000)
 
@@ -297,11 +297,12 @@ bot.on("ready", () => {
                         m: "a",
                         message: message.content
                     }])
+                } else {
+                    lob.sendArray([{
+                        m: "a",
+                        message: message.author.username + ": " + message.content
+                    }])
                 }
-                lob.sendArray([{
-                    m: "a",
-                    message: message.author.username + ": " + message.content
-                }])
             }
 
             if (message.channel.id == "382622516771946499") {
@@ -310,11 +311,12 @@ bot.on("ready", () => {
                         m: "a",
                         message: message.content
                     }])
+                } else {
+                    tyeet.sendArray([{
+                        m: "a",
+                        message: message.author.username + ": " + message.content
+                    }])
                 }
-                tyeet.sendArray([{
-                    m: "a",
-                    message: message.author.username + ": " + message.content
-                }])
             }
         }, 5000)
 
