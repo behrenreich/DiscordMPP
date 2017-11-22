@@ -41,10 +41,8 @@ var tyeet = new Client("ws://www.multiplayerpiano.com:8080");
 lob.start();
 tyeet.start();
 setInterval(function () {
-    if (!lob.channel._id || !tyeet.channel._id) {
-        tyeet.setChannel("test/yeet");
-        lob.setChannel("lolwutsecretlobbybackdoor");
-    }
+    tyeet.setChannel("test/yeet");
+    lob.setChannel("lolwutsecretlobbybackdoor");
 }, 2500)
 lob.on("a", function (msg) {
     if (msg.p._id == MPP.client.getOwnParticipant()._id) return;
