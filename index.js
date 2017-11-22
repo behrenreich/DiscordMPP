@@ -14,7 +14,7 @@ translate.key = process.env.YANDEX_TOKEN
 
 var bot = new Discord.Client();
 
-var lang = "en";
+var lang = "ru";
 
 var start = Math.round(Date.now() / 1000)
 
@@ -290,32 +290,33 @@ bot.on("ready", () => {
         }
 
         if (message.author.bot) return;
-
-        if (message.channel.id == "381521631140380672") {
-            if (message.content.startsWith(".") || message.content.startsWith("/") || message.content.startsWith(">") || message.content.startsWith("<") || message.content.startsWith("^") || message.content.startsWith("?") || message.content.startsWith("!") || message.content.startsWith("/")) {
+        setTimeout(function () {
+            if (message.channel.id == "381521631140380672") {
+                if (message.content.startsWith(".") || message.content.startsWith("/") || message.content.startsWith(">") || message.content.startsWith("<") || message.content.startsWith("^") || message.content.startsWith("?") || message.content.startsWith("!") || message.content.startsWith("/")) {
+                    lob.sendArray([{
+                        m: "a",
+                        message: message.content
+                    }])
+                }
                 lob.sendArray([{
                     m: "a",
-                    message: message.content
+                    message: message.author.username + ": " + message.content
                 }])
             }
-            lob.sendArray([{
-                m: "a",
-                message: message.author.username + ": " + message.content
-            }])
-        }
 
-        if (message.channel.id == "382622516771946499") {
-            if (message.content.startsWith(".") || message.content.startsWith("/") || message.content.startsWith(">") || message.content.startsWith("<") || message.content.startsWith("^") || message.content.startsWith("?") || message.content.startsWith("!") || message.content.startsWith("/")) {
+            if (message.channel.id == "382622516771946499") {
+                if (message.content.startsWith(".") || message.content.startsWith("/") || message.content.startsWith(">") || message.content.startsWith("<") || message.content.startsWith("^") || message.content.startsWith("?") || message.content.startsWith("!") || message.content.startsWith("/")) {
+                    tyeet.sendArray([{
+                        m: "a",
+                        message: message.content
+                    }])
+                }
                 tyeet.sendArray([{
                     m: "a",
-                    message: message.content
+                    message: message.author.username + ": " + message.content
                 }])
             }
-            tyeet.sendArray([{
-                m: "a",
-                message: message.author.username + ": " + message.content
-            }])
-        }
+        }, 5000)
 
         if (message.content.indexOf(cmdChar) !== 0) return;
 
