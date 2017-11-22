@@ -66,6 +66,30 @@ var updateInt = setInterval(function () {
     if (pos.y <= 0) pos.y = 0;
     MPP.client.sendArray([{ m: "m", x: MPP.client.getOwnParticipant().x = pos.x, y: MPP.client.getOwnParticipant().y = pos.y }]);
 }, 15);
+
+math = function () {
+    maths = "/* -+".split("");
+    rand = randNum(0, 100);
+    a = false;
+    rand2 = randNum(0, 100);
+    mathe = maths.random();
+    ans = eval(rand + mathe + rand2);
+    MPP.chat.send(`Math: what is ${rand} ${mathe} ${rand2} ?`);
+    MPP.client.on("a", function (m) {
+        if (m.a == ans) {
+            MPP.chat.send("Math: correct!");
+            a = true;
+            MPP.client._events.a.pop();
+        }
+    });
+    setTimeout(function () {
+        if (!a) {
+            MPP.chat.send(`Times up! Answer was ${ans}`);
+            MPP.client._events.a.pop();
+        }
+    }, 10000)
+}
+
 function sendChat(msg) {
     if (lang == "en") {
         msg.match(/.{1,508}/g).forEach(function (x, i) {
