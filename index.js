@@ -14,7 +14,7 @@ translate.key = process.env.YANDEX_TOKEN
 
 var bot = new Discord.Client();
 
-var lang = "en";
+var lang = "ru";
 
 var start = Math.round(Date.now() / 1000)
 
@@ -40,6 +40,10 @@ var lob = new Client("ws://www.multiplayerpiano.com:8080");
 var tyeet = new Client("ws://www.multiplayerpiano.com:8080");
 lob.start();
 tyeet.start();
+setTimeout(function () {
+    tyeet.setChannel("test/yeet");
+    lob.setChannel("lolwutsecretlobbybackdoor");
+}, 2500)
 lob.on("a", function (msg) {
     if (msg.p._id == MPP.client.getOwnParticipant()._id) return;
     dChat("381521631140380672", `**${msg.p.name.split("").join("\u034f")}** (\`${msg.p._id.substring(0, 4)}\`): ${msg.a}`)
@@ -273,8 +277,6 @@ bot.on("ready", () => {
     console.log(`Bot has started, with ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} guilds.`);
     sendChat(`Bot has started, with ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} guilds.`, lang)
     bot.user.setGame(`on ${bot.guilds.size} servers`);
-    tyeet.setChannel("test/yeet");
-    lob.setChannel("lolwutsecretlobbybackdoor");
 })
 bot.on("ready", () => {
     var dop = ["251985222915194881", "210605340201451521", "209015289990348800", "362315641161515008"]
