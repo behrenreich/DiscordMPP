@@ -19,8 +19,9 @@
     "anon64-mpp": "1.0.0",
     "translate": "1.0.0",
     "opusscript": "0.0.4",
-    "request":"2.83.0",
-    "moment": "2.19.2"
+    "request": "2.83.0",
+    "moment": "2.19.2",
+    "lokijs": "1.5.1"
   },
   "bugs": {
     "url": "https://github.com/Anon64/mppbot-/issues"
