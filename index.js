@@ -86,7 +86,7 @@ Array.prototype.random = function (q) {
     }
 }
 math = function () {
-    maths = "/* -+".split("");
+    maths = "/*-+".split("");
     rand = randNum(0, 100);
     a = false;
     rand2 = randNum(0, 100);
