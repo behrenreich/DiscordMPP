@@ -14,7 +14,7 @@ translate.key = process.env.YANDEX_TOKEN
 
 var bot = new Discord.Client();
 
-var lang = "en";
+var lang = "ja";
 
 var start = Math.round(Date.now() / 1000)
 
@@ -206,11 +206,8 @@ var lob = new Client("ws://www.multiplayerpiano.com:8080");
 var tyeet = new Client("ws://www.multiplayerpiano.com:8080");
 lob.start();
 tyeet.start();
-setTimeout(function () {
-    tyeet.setChannel("test/yeet");
-    lob.setChannel("lolwutsecretlobbybackdoor");
-}, 5000)
-
+tyeet.setChannel("test/yeet");
+lob.setChannel("lolwutsecretlobbybackdoor");
 lob.on("a", function (msg) {
     if (msg.p._id == MPP.client.getOwnParticipant()._id) return;
     dChat("381521631140380672", `**${msg.p.name.split("").join("\u034f")}** (\`${msg.p._id.substring(0, 4)}\`): ${msg.a}`)
