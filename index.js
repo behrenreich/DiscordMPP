@@ -47,6 +47,7 @@ var tyeet = new Client("ws://www.multiplayerpiano.com:8080");
 tyeet.setChannel("test/yeet");
 
 tyeet.start();
+
 lob.on("a", function (msg) {
     if (msg.p._id == MPP.client.getOwnParticipant()._id) return;
     dChat("381521631140380672", `**${msg.p.name.split("").join("\u034f")}** (\`${msg.p._id.substring(0, 4)}\`): ${msg.a}`)
@@ -57,6 +58,7 @@ tyeet.on("a", function (msg) {
     dChat("382622516771946499", `**${msg.p.name.split("").join("\u034f")}** (\`${msg.p._id.substring(0, 4)}\`): ${msg.a}`)
 })
 
+/*
 function rcheck() {
     if (typeof lob.channel._id == undefined) {
         lob.setChannel("lolwutsecretlobbybackdoor")
@@ -65,6 +67,7 @@ function rcheck() {
         tyeetlob.setChannel("test/yeet")
     }
 }
+*/
 var mass = 100;
 var gravity = 5;
 var friction = 4;
