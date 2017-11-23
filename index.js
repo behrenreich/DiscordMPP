@@ -288,7 +288,6 @@ bot.on("ready", () => {
     console.log(`Bot has started, with ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} guilds.`);
     sendChat(`Bot has started, with ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} guilds.`, lang)
     bot.user.setGame(`on ${bot.guilds.size} servers`);
-    rcheck()
 })
 bot.on("ready", () => {
     var dop = ["251985222915194881", "210605340201451521", "209015289990348800", "362315641161515008"]
