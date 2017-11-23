@@ -58,10 +58,10 @@ tyeet.on("a", function (msg) {
 })
 
 function rcheck() {
-    if (lob.channel._id != "lobby") {
+    if (typeof lob.channel._id == undefined) {
         lob.setChannel("lolwutsecretlobbybackdoor")
     }
-    if (tyeet.channel._id != "test/yeet") {
+    if (typeof tyeet.channel._id == undefined) {
         tyeetlob.setChannel("test/yeet")
     }
 }
