@@ -37,10 +37,15 @@ var chatInt2 = setInterval(function () {
 }, 2050);
 
 var lob = new Client("ws://www.multiplayerpiano.com:8080");
-var tyeet = new Client("ws://www.multiplayerpiano.com:8080");
-tyeet.setChannel("test/yeet");
+
 lob.setChannel("lolwutsecretlobbybackdoor");
+
 lob.start();
+
+var tyeet = new Client("ws://www.multiplayerpiano.com:8080");
+
+tyeet.setChannel("test/yeet");
+
 tyeet.start();
 lob.on("a", function (msg) {
     if (msg.p._id == MPP.client.getOwnParticipant()._id) return;
