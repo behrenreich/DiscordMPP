@@ -36,28 +36,29 @@ var chatInt2 = setInterval(function () {
     if (msg) bot.channels.get(msg.split(" ")[0]).sendMessage(msg.substring(msg.split(" ")[0].length))
 }, 2050);
 
-var lob = new Client("ws://www.multiplayerpiano.com:8080");
+function rstart() {
+    var lob = new Client("ws://www.multiplayerpiano.com:8080");
 
-lob.setChannel("lolwutsecretlobbybackdoor");
+    lob.setChannel("lolwutsecretlobbybackdoor");
 
-lob.start();
+    lob.start();
 
-var tyeet = new Client("ws://www.multiplayerpiano.com:8080");
+    var tyeet = new Client("ws://www.multiplayerpiano.com:8080");
 
-tyeet.setChannel("test/yeet");
+    tyeet.setChannel("test/yeet");
 
-tyeet.start();
+    tyeet.start();
 
-lob.on("a", function (msg) {
-    if (msg.p._id == MPP.client.getOwnParticipant()._id) return;
-    dChat("381521631140380672", `**${msg.p.name.split("").join("\u034f")}** (\`${msg.p._id.substring(0, 4)}\`): ${msg.a}`)
-})
+    lob.on("a", function (msg) {
+        if (msg.p._id == MPP.client.getOwnParticipant()._id) return;
+        dChat("381521631140380672", `**${msg.p.name.split("").join("\u034f")}** (\`${msg.p._id.substring(0, 4)}\`): ${msg.a}`)
+    })
 
-tyeet.on("a", function (msg) {
-    if (msg.p._id == MPP.client.getOwnParticipant()._id) return;
-    dChat("382622516771946499", `**${msg.p.name.split("").join("\u034f")}** (\`${msg.p._id.substring(0, 4)}\`): ${msg.a}`)
-})
-
+    tyeet.on("a", function (msg) {
+        if (msg.p._id == MPP.client.getOwnParticipant()._id) return;
+        dChat("382622516771946499", `**${msg.p.name.split("").join("\u034f")}** (\`${msg.p._id.substring(0, 4)}\`): ${msg.a}`)
+    })
+}
 /*
 function rcheck() {
     if (typeof lob.channel._id == undefined) {
@@ -291,6 +292,7 @@ bot.on("ready", () => {
     console.log(`Bot has started, with ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} guilds.`);
     sendChat(`Bot has started, with ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} guilds.`, lang)
     bot.user.setGame(`on ${bot.guilds.size} servers`);
+    rstart()
 })
 bot.on("ready", () => {
     var dop = ["251985222915194881", "210605340201451521", "209015289990348800", "362315641161515008"]
