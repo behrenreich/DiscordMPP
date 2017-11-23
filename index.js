@@ -14,7 +14,7 @@ translate.key = process.env.YANDEX_TOKEN
 
 var bot = new Discord.Client();
 
-var lang = "ja";
+var lang = "en";
 
 var start = Math.round(Date.now() / 1000)
 
@@ -37,13 +37,16 @@ var chatInt2 = setInterval(function () {
 }, 2050);
 
 var lob = new Client("ws://www.multiplayerpiano.com:8080");
-var tyeet = new Client("ws://www.multiplayerpiano.com:8080");
+
+lob.setChannel("lolwutsecretlobbybackdoor");
+
 lob.start();
+
+var tyeet = new Client("ws://www.multiplayerpiano.com:8080");
+
+tyeet.setChannel("test/yeet");
+
 tyeet.start();
-setInterval(function () {
-    tyeet.setChannel("test/yeet");
-    lob.setChannel("lolwutsecretlobbybackdoor");
-}, 2500)
 lob.on("a", function (msg) {
     if (msg.p._id == MPP.client.getOwnParticipant()._id) return;
     dChat("381521631140380672", `**${msg.p.name.split("").join("\u034f")}** (\`${msg.p._id.substring(0, 4)}\`): ${msg.a}`)
@@ -54,6 +57,14 @@ tyeet.on("a", function (msg) {
     dChat("382622516771946499", `**${msg.p.name.split("").join("\u034f")}** (\`${msg.p._id.substring(0, 4)}\`): ${msg.a}`)
 })
 
+function rcheck() {
+    if (typeof lob.channel._id == undefined) {
+        lob.setChannel("lolwutsecretlobbybackdoor")
+    }
+    if (typeof tyeet.channel._id == undefined) {
+        tyeetlob.setChannel("test/yeet")
+    }
+}
 var mass = 100;
 var gravity = 5;
 var friction = 4;
@@ -119,7 +130,7 @@ math = function () {
     mathe = maths.random();
     ans = eval(rand + mathe + rand2);
     pts = randNum(15, 130);
-    MPP.chat.send(`Math: what is ${rand} ${mathe} ${rand2} ? >${pts} pts<`);
+    MPP.chat.send(`Math: what is ${rand} ${mathe} ${rand2}? >${pts} pts<`);
     MPP.client.on("a", function (m) {
         if (m.a == ans) {
             if (!check(m.p._id)) {
@@ -138,7 +149,7 @@ math = function () {
             MPP.client._events.a.pop();
             tried = false;
         }
-    }, 15000)
+    }, 20000)
 }
 
 function sendChat(msg) {
@@ -277,6 +288,7 @@ bot.on("ready", () => {
     console.log(`Bot has started, with ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} guilds.`);
     sendChat(`Bot has started, with ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} guilds.`, lang)
     bot.user.setGame(`on ${bot.guilds.size} servers`);
+    rcheck()
 })
 bot.on("ready", () => {
     var dop = ["251985222915194881", "210605340201451521", "209015289990348800", "362315641161515008"]
