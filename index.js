@@ -125,7 +125,7 @@ math = function () {
             MPP.client._events.a.pop();
             tried = false;
         }
-    }, 20000)
+    }, 22000)
 }
 
 function sendChat(msg) {
