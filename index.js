@@ -97,6 +97,7 @@ function check(id) {
 }
 tried = false;
 math = function () {
+    startingT = Date.now()/1000
     tried = true;
     maths = "/*-+".split("");
     rand = randNum(0, 100);
@@ -111,7 +112,7 @@ math = function () {
             if (!check(m.p._id)) {
                 people[m.p._id] = { pts: 0 };
             }
-            MPP.chat.send("Math: correct!");
+            MPP.chat.send(`Math: correct! (that took you ${(Date.now()/1000) - startingT} seconds)`);
             a = true;
             tried = false;
             MPP.client._events.a.pop();
