@@ -325,4 +325,4 @@ function name() {
 }
 setInterval(name, 2100)
 bot.login(process.env.BOT_TOKEN)
-} catch(e) return;
+} catch(e) {return}
