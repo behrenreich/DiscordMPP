@@ -21,7 +21,8 @@
     "opusscript": "0.0.4",
     "request": "2.83.0",
     "moment": "2.19.2",
-    "lokijs": "1.5.1"
+    "lokijs": "1.5.1",
+    "pg": "7.4.0"
   },
   "bugs": {
     "url": "https://github.com/Anon64/mppbot-/issues"
