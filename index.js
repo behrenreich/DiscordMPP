@@ -4,13 +4,12 @@ const Discord = require("discord.js");
 
 const translate = require('translate');
 
-// const time = require("moment")
 
 var Client = require("./AMPP.js/Client.js")
 
 translate.engine = "yandex"
 
-var process = require("./secret.json")
+//var process = require("./secret.json")
 
 translate.key = process.env.YANDEX_TOKEN
 
