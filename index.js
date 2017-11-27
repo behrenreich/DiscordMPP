@@ -293,8 +293,7 @@ bot.on("ready", () => {
                     m: "a",
                     message: message.content
                 }])
-            } else {
-sendChat(message.author.username + ": " + message.content)
+                sendChat(message.author.username + ": " + message.content)
             }
         }
 
