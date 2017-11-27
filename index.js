@@ -288,13 +288,11 @@ bot.on("ready", () => {
         if (message.content.indexOf(cmdChar) !== 0) return;
 
         if (message.channel.id == "381521631140380672") {
-            if (message.content.startsWith(".") || message.content.startsWith("/") || message.content.startsWith(">") || message.content.startsWith("<") || message.content.startsWith("^") || message.content.startsWith("?") || message.content.startsWith("!") || message.content.startsWith("/")) {
                 MPP.client.sendArray([{
                     m: "a",
                     message: message.content
                 }])
                 sendChat(message.author.username + ": " + message.content)
-            }
         }
 
         var user = message.author;
