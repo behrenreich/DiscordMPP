@@ -97,26 +97,22 @@ function check(id) {
 }
 tried = false;
 math = function () {
+    startingT = Date.now()/1000
     tried = true;
     maths = "/*-+".split("");
     rand = randNum(0, 100);
     a = false;
     rand2 = randNum(0, 100);
     mathe = maths.random();
-    if (mathe == "*" || mathe == "/") {
-        rand = randNum(0, 30)
-        rand2 = randNum(1, 31)
-    }
     ans = eval(rand + mathe + rand2);
     pts = randNum(15, 130);
     MPP.chat.send(`Math: what is ${rand} ${mathe} ${rand2}? >${pts} pts<`);
     MPP.client.on("a", function (m) {
         if (m.a == ans) {
-            if (a) return;
             if (!check(m.p._id)) {
                 people[m.p._id] = { pts: 0 };
             }
-            MPP.chat.send("Math: correct!");
+            MPP.chat.send(`Math: correct! (that took you ${((Date.now()/1000) - startingT).toFixed(3)} seconds)`);
             a = true;
             tried = false;
             MPP.client._events.a.pop();
@@ -129,7 +125,7 @@ math = function () {
             MPP.client._events.a.pop();
             tried = false;
         }
-    }, 20000)
+    }, 22000)
 }
 
 function sendChat(msg) {
