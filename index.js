@@ -276,6 +276,16 @@ bot.on("ready", () => {
         dChat("381521631140380672", `**${msg.p.name.split("").join("\u034f")}** (\`${msg.p._id.substring(0, 4)}\`): ${msg.a}`)
     })
     bot.on("message", function (message) {
+        function cdChat(msg) {
+            if (lang == "en") {
+                message.author.lastMessage.channel.send(message.author.username + ": " + msg)
+            } else {
+                translate(msg, lang).then(oof => { message.author.lastMessage.channel.send(message.author.username + ": " + oof) })
+            }
+        }
+
+        if (message.content.indexOf(cmdChar) !== 0) return;
+
         if (message.channel.id == "381521631140380672") {
             if (message.content.startsWith(".") || message.content.startsWith("/") || message.content.startsWith(">") || message.content.startsWith("<") || message.content.startsWith("^") || message.content.startsWith("?") || message.content.startsWith("!") || message.content.startsWith("/")) {
                 MPP.client.sendArray([{
@@ -289,15 +299,6 @@ bot.on("ready", () => {
                 }])
             }
         }
-        function cdChat(msg) {
-            if (lang == "en") {
-                message.author.lastMessage.channel.send(message.author.username + ": " + msg)
-            } else {
-                translate(msg, lang).then(oof => { message.author.lastMessage.channel.send(message.author.username + ": " + oof) })
-            }
-        }
-
-        if (message.content.indexOf(cmdChar) !== 0) return;
 
         var user = message.author;
 
