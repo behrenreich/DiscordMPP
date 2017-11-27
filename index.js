@@ -294,10 +294,7 @@ bot.on("ready", () => {
                     message: message.content
                 }])
             } else {
-                MPP.client.sendArray([{
-                    m: "a",
-                    message: message.author.username + ": " + message.content
-                }])
+sendChat(message.author.username + ": " + message.content)
             }
         }
 
