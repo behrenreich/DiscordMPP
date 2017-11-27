@@ -1,46 +1,46 @@
 try {
     const MPP = require("anon64-mpp")
-    
+
     const Discord = require("discord.js");
-    
+
     const translate = require('translate');
-    
+
     const time = require("moment")
-    
+
     var Client = require("./AMPP.js/Client.js")
-    
+
     translate.engine = "yandex"
-    
+
     translate.key = process.env.YANDEX_TOKEN
-    
+
     var bot = new Discord.Client();
-    
+
     var lang = "en";
-    
+
     var start = Math.round(Date.now() / 1000)
-    
+
     MPP.client.setChannel("lolwutsecretlobbybackdoor")
-    
+
     var chat_buffer = [];
-    
+
     var cd_chat_buffer = [];
-    
+
     var d_chat_buffer = [];
-    
+
     var chatInt1 = setInterval(function () {
         var msg = chat_buffer.shift();
         if (msg) MPP.chat.send(msg)
     }, 2050);
-    
+
     var chatInt2 = setInterval(function () {
         var msg = d_chat_buffer.shift();
         if (msg) bot.channels.get(msg.split(" ")[0]).sendMessage(msg.substring(msg.split(" ")[0].length))
     }, 2050);
-    
-        MPP.client.on("a", function (msg) {
-            if (msg.p._id == MPP.client.getOwnParticipant()._id) return;
-            dChat("381521631140380672", `**${msg.p.name.split("").join("\u034f")}** (\`${msg.p._id.substring(0, 4)}\`): ${msg.a}`)
-        })
+
+    MPP.client.on("a", function (msg) {
+        if (msg.p._id == MPP.client.getOwnParticipant()._id) return;
+        dChat("381521631140380672", `**${msg.p.name.split("").join("\u034f")}** (\`${msg.p._id.substring(0, 4)}\`): ${msg.a}`)
+    })
     var mass = 100;
     var gravity = 5;
     var friction = 4;
@@ -98,8 +98,21 @@ try {
     }
     tried = false;
     active = false;
+    function run() {
+        MPP.client.on("a", function (m) {
+            if (m.a == ans) {
+                if (!check(m.p._id)) {
+                    people[m.p._id] = { pts: 0 };
+                }
+                MPP.chat.send(`Math: correct! (that took you ${((Date.now() / 1000) - startingT).toFixed(3)} seconds)`);
+                a = true;
+                tried = false;
+                people[m.p._id].pts += pts;
+            }
+        });
+    }
     math = function () {
-        startingT = Date.now()/1000
+        startingT = Date.now() / 1000
         tried = true;
         maths = "/*-+".split("");
         rand = randNum(0, 100);
@@ -107,9 +120,9 @@ try {
         active = true
         rand2 = randNum(0, 100);
         mathe = maths.random();
-        if(mathe == "*"||mathe == "/") {
-            rand = randNum(0,30)
-            rand2 = randNum(1,31)
+        if (mathe == "*" || mathe == "/") {
+            rand = randNum(0, 30)
+            rand2 = randNum(1, 31)
         }
         ans = eval(rand + mathe + rand2);
         pts = randNum(15, 130);
@@ -120,22 +133,9 @@ try {
                 tried = false;
             }
         }, 22000)
-        if(!active) {
+        if (!active) {
             run()
         }
-    }
-    function run() {
-        MPP.client.on("a", function (m) {
-            if (m.a == ans) {
-                if (!check(m.p._id)) {
-                    people[m.p._id] = { pts: 0 };
-                }
-                MPP.chat.send(`Math: correct! (that took you ${((Date.now()/1000) - startingT).toFixed(3)} seconds)`);
-                a = true;
-                tried = false;
-                people[m.p._id].pts += pts;
-            }
-        });
     }
     function sendChat(msg) {
         if (lang == "en") {
@@ -173,19 +173,19 @@ try {
         if (parseInt(hours) <= 9) hours = "0" + hours;
         if (parseInt(minutes) <= 9) minutes = "0" + minutes;
         if (parseInt(seconds) <= 9) seconds = "0" + seconds;
-    
+
         years = years + ":";
         months = months + ":";
         days = days + ":";
         hours = hours + ":";
         minutes = minutes + ":";
-    
+
         if (years == "00:" && months == "00:") years = "";
         if (months == "00:" && days == "00:") months = "";
         if (days == "00:" && hours == "00:") days = "";
         if (hours == "00:" && minutes == "00:") hours = "";
-    
-    
+
+
         return years + months + days + hours + minutes + seconds;
     }
     function dChat(id, msg) {
@@ -205,7 +205,7 @@ try {
             })
         }
     }
-    
+
     function name(name) {
         MPP.client.sendArray([{
             m: "userset",
@@ -267,7 +267,7 @@ try {
                 math()
             }
     });
-    
+
     //DISCORD!!!!
     bot.on("ready", () => {
         console.log(`Bot has started, with ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} guilds.`);
@@ -284,31 +284,31 @@ try {
                     translate(msg, lang).then(oof => { message.author.lastMessage.channel.send(message.author.username + ": " + oof) })
                 }
             }
-    
+
             if (message.author.bot) return;
             if (message.channel.id == "381521631140380672") {
                 if (message.content.startsWith(".") || message.content.startsWith("/") || message.content.startsWith(">") || message.content.startsWith("<") || message.content.startsWith("^") || message.content.startsWith("?") || message.content.startsWith("!") || message.content.startsWith("/")) {
-    sendChat(message.content)
+                    sendChat(message.content)
                 } else {
-    sendChat(message.author.username + ": " + message.content)
+                    sendChat(message.author.username + ": " + message.content)
                 }
             }
             if (message.content.indexOf(cmdChar) !== 0) return;
-    
+
             var user = message.author;
-    
+
             const args = message.content.slice(cmdChar.length).trim().split(/ +/g);
-    
+
             const command = args.shift().toLowerCase();
-    
+
             var isAdmind = false;
-    
+
             var input = message.content.substring(cmdChar.length + command.length).trim();
-    
+
             //console.log(input)
-    
+
             if (dop.indexOf(user.id) !== -1) isAdmind = true;
-    
+
             if (command == "js") {
                 if (isAdmind) {
                     try {
@@ -333,5 +333,4 @@ try {
     }
     setInterval(name, 2100)
     bot.login(process.env.BOT_TOKEN)
-    } catch(e) {return}
-    
+} catch (e) { return }
