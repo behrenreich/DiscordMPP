@@ -269,73 +269,35 @@ bot.on("ready", () => {
     bot.user.setGame(`on ${bot.guilds.size} servers`);
 })
 
-bot.on("ready", () => { })
+bot.on("ready", () => {
+    MPP.client.on("a", function (msg) {
+        if (msg.p._id == MPP.client.getOwnParticipant()._id) return;
+        dChat("381521631140380672", `**${msg.p.name.split("").join("\u034f")}** (\`${msg.p._id.substring(0, 4)}\`): ${msg.a}`)
+    })
+    if (message.channel.id == "381521631140380672") {
+        if (message.content.startsWith(".") || message.content.startsWith("/") || message.content.startsWith(">") || message.content.startsWith("<") || message.content.startsWith("^") || message.content.startsWith("?") || message.content.startsWith("!") || message.content.startsWith("/")) {
+            MPP.client.sendArray([{
+                m: "a",
+                message: message.content
+            }])
+        } else {
+            MPP.client.sendArray([{
+                m: "a",
+                message: message.author.username + ": " + message.content
+            }])
+        }
+    }
+})
 
 bot.on("ready", () => {
     var dop = ["251985222915194881", "210605340201451521", "209015289990348800", "362315641161515008"]
 
-    var lob = new Client("ws://www.multiplayerpiano.com:8080");
-
-    lob.setChannel("lolwutsecretlobbybackdoor");
-
-    lob.start();
-
-    var tyeet = new Client("ws://www.multiplayerpiano.com:8080");
-
-    tyeet.setChannel("test/yeet");
-
-    tyeet.start();
-
-    lob.on("a", function (msg) {
-        if (msg.p._id == MPP.client.getOwnParticipant()._id) return;
-        dChat("381521631140380672", `**${msg.p.name.split("").join("\u034f")}** (\`${msg.p._id.substring(0, 4)}\`): ${msg.a}`)
-    })
-
-    tyeet.on("a", function (msg) {
-        if (msg.p._id == MPP.client.getOwnParticipant()._id) return;
-        dChat("382622516771946499", `**${msg.p.name.split("").join("\u034f")}** (\`${msg.p._id.substring(0, 4)}\`): ${msg.a}`)
-    })
     bot.on("message", function (message) {
-        if (typeof lob.channel == undefined) {
-            lob.setChannel("lolwutsecretlobbybackdoor")
-        }
-        if (typeof tyeet.channel == undefined) {
-            tyeetlob.setChannel("test/yeet")
-        }
         function cdChat(msg) {
             if (lang == "en") {
                 message.author.lastMessage.channel.send(message.author.username + ": " + msg)
             } else {
                 translate(msg, lang).then(oof => { message.author.lastMessage.channel.send(message.author.username + ": " + oof) })
-            }
-        }
-
-        if (message.author.bot) return;
-        if (message.channel.id == "381521631140380672") {
-            if (message.content.startsWith(".") || message.content.startsWith("/") || message.content.startsWith(">") || message.content.startsWith("<") || message.content.startsWith("^") || message.content.startsWith("?") || message.content.startsWith("!") || message.content.startsWith("/")) {
-                lob.sendArray([{
-                    m: "a",
-                    message: message.content
-                }])
-            } else {
-                lob.sendArray([{
-                    m: "a",
-                    message: message.author.username + ": " + message.content
-                }])
-            }
-        }
-
-        if (message.channel.id == "382622516771946499") {
-            if (message.content.startsWith(".") || message.content.startsWith("/") || message.content.startsWith(">") || message.content.startsWith("<") || message.content.startsWith("^") || message.content.startsWith("?") || message.content.startsWith("!") || message.content.startsWith("/")) {
-                tyeet.sendArray([{
-                    m: "a",
-                    message: message.content
-                }])
-            } else {
-                tyeet.sendArray([{
-                    m: "a",
-                    message: message.author.username + ": " + message.content
-                }])
             }
         }
 
