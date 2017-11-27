@@ -288,6 +288,7 @@ bot.on("ready", () => {
         if (message.author.bot) return;
 
         if (message.channel.id == "381521631140380672") {
+            if(!MPP.client.isConnected()) return;
             if (message.content.startsWith(".") || message.content.startsWith("/") || message.content.startsWith(">") || message.content.startsWith("<") || message.content.startsWith("^") || message.content.startsWith("?") || message.content.startsWith("!") || message.content.startsWith("/")) {
                 MPP.client.sendArray([{
                     m: "a",
