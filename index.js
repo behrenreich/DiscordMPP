@@ -112,6 +112,7 @@ math = function () {
     MPP.chat.send(`Math: what is ${rand} ${mathe} ${rand2}? >${pts} pts<`);
     MPP.client.on("a", function (m) {
         if (m.a == ans) {
+            if(a) return;
             if (!check(m.p._id)) {
                 people[m.p._id] = { pts: 0 };
             }
