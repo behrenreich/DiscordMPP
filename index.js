@@ -270,26 +270,25 @@ bot.on("ready", () => {
 })
 
 bot.on("ready", () => {
+    var dop = ["251985222915194881", "210605340201451521", "209015289990348800", "362315641161515008"]
     MPP.client.on("a", function (msg) {
         if (msg.p._id == MPP.client.getOwnParticipant()._id) return;
         dChat("381521631140380672", `**${msg.p.name.split("").join("\u034f")}** (\`${msg.p._id.substring(0, 4)}\`): ${msg.a}`)
     })
-    if (message.channel.id == "381521631140380672") {
-        if (message.content.startsWith(".") || message.content.startsWith("/") || message.content.startsWith(">") || message.content.startsWith("<") || message.content.startsWith("^") || message.content.startsWith("?") || message.content.startsWith("!") || message.content.startsWith("/")) {
-            MPP.client.sendArray([{
-                m: "a",
-                message: message.content
-            }])
-        } else {
-            MPP.client.sendArray([{
-                m: "a",
-                message: message.author.username + ": " + message.content
-            }])
-        }
-    }
-    var dop = ["251985222915194881", "210605340201451521", "209015289990348800", "362315641161515008"]
-
     bot.on("message", function (message) {
+        if (message.channel.id == "381521631140380672") {
+            if (message.content.startsWith(".") || message.content.startsWith("/") || message.content.startsWith(">") || message.content.startsWith("<") || message.content.startsWith("^") || message.content.startsWith("?") || message.content.startsWith("!") || message.content.startsWith("/")) {
+                MPP.client.sendArray([{
+                    m: "a",
+                    message: message.content
+                }])
+            } else {
+                MPP.client.sendArray([{
+                    m: "a",
+                    message: message.author.username + ": " + message.content
+                }])
+            }
+        }
         function cdChat(msg) {
             if (lang == "en") {
                 message.author.lastMessage.channel.send(message.author.username + ": " + msg)
