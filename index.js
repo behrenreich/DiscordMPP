@@ -112,7 +112,7 @@ math = function () {
     MPP.chat.send(`Math: what is ${rand} ${mathe} ${rand2}? >${pts} pts<`);
     MPP.client.on("a", function (m) {
         if (m.a == ans) {
-            if(a) return;
+            if (a) return;
             if (!check(m.p._id)) {
                 people[m.p._id] = { pts: 0 };
             }
@@ -285,11 +285,23 @@ bot.on("ready", () => {
             }
         }
 
-        if (message.content.indexOf(cmdChar) !== 0) return;
+        if (message.author.bot) return;
 
         if (message.channel.id == "381521631140380672") {
-                sendChat(message.author.username + ": " + message.content)
+            if (message.content.startsWith(".") || message.content.startsWith("/") || message.content.startsWith(">") || message.content.startsWith("<") || message.content.startsWith("^") || message.content.startsWith("?") || message.content.startsWith("!") || message.content.startsWith("/")) {
+                MPP.client.sendArray([{
+                    m: "a",
+                    message: message.content
+                }])
+            } else {
+                MPP.client.sendArray([{
+                    m: "a",
+                    message: message.author.username + ": " + message.content
+                }])
+            }
         }
+
+        if (message.content.indexOf(cmdChar) !== 0) return;
 
         var user = message.author;
 
