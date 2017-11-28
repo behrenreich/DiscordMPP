@@ -28,16 +28,15 @@ var cd_chat_buffer = [];
 
 var d_chat_buffer = [];
 
-MPPtrs = function (txt,lang) {
+MPPtrs = function (txt, lang) {
     translate(txt, lang).then(oof => {
         return oof
-    }
-    )
+    })
 }
 
 var chatInt1 = setInterval(function () {
     var msg = chat_buffer.shift();
-    if (msg) MPP.chat.send(MPPtrs(msg))
+    if (msg) MPP.chat.send(MPPtrs(msg, lang))
 }, 2050);
 
 
@@ -76,9 +75,6 @@ var updateInt = setInterval(function () {
     if (pos.y <= 0) pos.y = 0;
     MPP.client.sendArray([{ m: "m", x: MPP.client.getOwnParticipant().x = pos.x, y: MPP.client.getOwnParticipant().y = pos.y }]);
 }, 15);
-function newFunction(oof) {
-    return oof;
-}
 
 function randNum(min, max) {
     return Math.round(Math.random() * (max - min) + min);
@@ -265,15 +261,15 @@ MPP.client.on("a", function (msg) {
             math()
         }
 });
-MPP.client.on("a", function (msg) {
-    if (msg.p._id == MPP.client.getOwnParticipant()._id) return;
-    dChat("381521631140380672", `**${msg.p.name.split("").join("\u034f")}** (\`${msg.p._id.substring(0, 4)}\`): ${msg.a}`)
-})
 //DISCORD!!!!
 bot.on("ready", () => {
     console.log(`Bot has started, with ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} guilds.`);
     sendChat(`Bot has started, with ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} guilds.`, lang)
     bot.user.setGame(`on ${bot.guilds.size} servers`);
+    MPP.client.on("a", function (msg) {
+        if (msg.p._id == MPP.client.getOwnParticipant()._id) return;
+        dChat("381521631140380672", `**${msg.p.name.split("").join("\u034f")}** (\`${msg.p._id.substring(0, 4)}\`): ${msg.a}`)
+    })
 })
 
 bot.on("ready", () => {
