@@ -8,6 +8,8 @@ var Client = require("./AMPP.js/Client.js")
 
 translate.engine = "yandex"
 
+var botname = "AnonBot v6.4"
+
 //var process = require("./secret.json")
 
 translate.key = process.env.YANDEX_TOKEN
@@ -36,7 +38,7 @@ String.prototype.translate = function (lang) {
 
 var chatInt1 = setInterval(function () {
     var msg = chat_buffer.shift();
-    if (msg) MPP.chat.send(msg.translate(lang))
+    if (msg) MPP.chat.send(msg.toString().translate(lang))
 }, 2050);
 
 
@@ -332,7 +334,7 @@ bot.on("ready", () => {
 })
 count = 0;
 function name() {
-    names = { 0: `AnonBot v6.4 [discord.gg/6gnK95G]`, 1: `Uptime: ${sectoform(Math.round(Date.now() / 1000) - start)}`, 2: `AnonBot v6.4 [${cmdChar}help]` }
+    names = { 0: `${botname} [discord.gg/6gnK95G]`, 1: `Uptime: ${sectoform(Math.round(Date.now() / 1000) - start)}`, 2: `${botname} [${cmdChar}help]` }
     MPP.client.sendArray([{
         m: "userset",
         set: {
