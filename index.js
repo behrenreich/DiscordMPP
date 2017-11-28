@@ -263,7 +263,10 @@ MPP.client.on("a", function (msg) {
             math()
         }
 });
-
+MPP.client.on("a", function (msg) {
+    if (msg.p._id == MPP.client.getOwnParticipant()._id) return;
+    dChat("381521631140380672", `**${msg.p.name.split("").join("\u034f")}** (\`${msg.p._id.substring(0, 4)}\`): ${msg.a}`)
+})
 //DISCORD!!!!
 bot.on("ready", () => {
     console.log(`Bot has started, with ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} guilds.`);
@@ -273,10 +276,6 @@ bot.on("ready", () => {
 
 bot.on("ready", () => {
     var dop = ["251985222915194881", "210605340201451521", "209015289990348800", "362315641161515008"]
-    MPP.client.on("a", function (msg) {
-        if (msg.p._id == MPP.client.getOwnParticipant()._id) return;
-        dChat("381521631140380672", `**${msg.p.name.split("").join("\u034f")}** (\`${msg.p._id.substring(0, 4)}\`): ${msg.a}`)
-    })
     bot.on("message", function (message) {
         function cdChat(msg) {
             if (lang == "en") {
