@@ -27,10 +27,12 @@ var cd_chat_buffer = [];
 var d_chat_buffer = [];
 
 String.prototype.translate = function (lang) {
+    var outp = "";
     translate(this, lang).then(oof => {
-        return oof
+        outp = oof
     }
     )
+    return outp;
 }
 
 var chatInt1 = setInterval(function () {
