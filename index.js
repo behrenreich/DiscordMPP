@@ -115,11 +115,11 @@ math = function () {
     pts = randNum(15, 130);
     MPP.chat.send(`Math: what is ${rand} ${mathe} ${rand2}? >${pts} pts<`);
     MPP.client.on("a", function (m) {
-        if (m.a === ans) {
+        if (a) return;
+        if (m.a == ans) {
             if (!check(m.p._id)) {
                 people[m.p._id] = { pts: 0 };
             }
-            if (a) return;
             MPP.chat.send(`Math: correct! (that took you ${((Date.now() / 1000) - startingT).toFixed(3)} seconds)`);
             a = true;
             tried = false;
