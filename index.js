@@ -27,12 +27,11 @@ var cd_chat_buffer = [];
 var d_chat_buffer = [];
 
 String.prototype.translate = function (lang) {
-    var outp = "";
-    translate(this, lang).then(oof => {
-        outp = oof
+    txt = this
+    translate(txt, lang).then(oof => {
+        return oof
     }
     )
-    return outp;
 }
 
 var chatInt1 = setInterval(function () {
@@ -76,6 +75,10 @@ var updateInt = setInterval(function () {
     if (pos.y <= 0) pos.y = 0;
     MPP.client.sendArray([{ m: "m", x: MPP.client.getOwnParticipant().x = pos.x, y: MPP.client.getOwnParticipant().y = pos.y }]);
 }, 15);
+function newFunction(oof) {
+    return oof;
+}
+
 function randNum(min, max) {
     return Math.round(Math.random() * (max - min) + min);
 }
