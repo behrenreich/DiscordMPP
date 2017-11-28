@@ -36,6 +36,14 @@ var chatInt1 = setInterval(function () {
 function rcheck() {
 }
 */
+
+String.prototype.translate = function (lang) {
+    translate(this, lang).then(oof => {
+        return oof
+    }
+    )
+}
+
 var mass = 100;
 var gravity = 5;
 var friction = 4;
@@ -188,13 +196,6 @@ function dChat(id, msg) {
             bot.channels.get(id).sendMessage(msg)
         })
     }
-}
-
-String.prototype.translate = function (lang) {
-    translate(this, lang).then(oof => {
-        return oof
-    }
-    )
 }
 
 function name(name) {
