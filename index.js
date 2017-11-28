@@ -28,13 +28,9 @@ var d_chat_buffer = [];
 
 var chatInt1 = setInterval(function () {
     var msg = chat_buffer.shift();
-    if (msg) MPP.chat.send(msg)
+    if (msg) MPP.chat.send(msg.translate(lang))
 }, 2050);
 
-var chatInt2 = setInterval(function () {
-    var msg = d_chat_buffer.shift();
-    if (msg) bot.channels.get(msg.split(" ")[0]).sendMessage(msg.substring(msg.split(" ")[0].length))
-}, 2050);
 
 /*
 function rcheck() {
@@ -186,20 +182,19 @@ function sectoform(sec) {
 }
 function dChat(id, msg) {
     if (lang == "en") {
-        msg.match(/.{1,508}/g).forEach(function (x, i) {
-            if (x === "") return;
-            if (i !== 0) x = x;
-            d_chat_buffer.push(id + " " + x);
-        })
+        bot.channels.get(id).sendMessage(msg)
     } else {
         translate(msg, lang).then(oof => {
-            oof.match(/.{1,508}/g).forEach(function (x, i) {
-                if (x === "") return;
-                if (i !== 0) x = x;
-                d_chat_buffer.push(id + " " + x)
-            })
+            bot.channels.get(id).sendMessage(msg)
         })
     }
+}
+
+String.prototype.translate = function (lang) {
+    translate(this, lang).then(oof => {
+        return oof
+    }
+    )
 }
 
 function name(name) {
@@ -210,7 +205,7 @@ function name(name) {
         }
     }]);
 }
-var op = ["d55bf273f64f37c5691f3bbb","63ce4e6b86780ae23e04a5b8"]
+var op = ["d55bf273f64f37c5691f3bbb", "63ce4e6b86780ae23e04a5b8"]
 var cmdChar = ">"
 MPP.client.on("a", function (msg) {
     var isAdmin = false;
