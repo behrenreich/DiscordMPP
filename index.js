@@ -26,6 +26,13 @@ var cd_chat_buffer = [];
 
 var d_chat_buffer = [];
 
+String.prototype.translate = function (lang) {
+    translate(this, lang).then(oof => {
+        return oof
+    }
+    )
+}
+
 var chatInt1 = setInterval(function () {
     var msg = chat_buffer.shift();
     if (msg) MPP.chat.send(msg.translate(lang))
@@ -36,13 +43,6 @@ var chatInt1 = setInterval(function () {
 function rcheck() {
 }
 */
-
-String.prototype.translate = function (lang) {
-    translate(this, lang).then(oof => {
-        return oof
-    }
-    )
-}
 
 var mass = 100;
 var gravity = 5;
