@@ -28,15 +28,11 @@ var cd_chat_buffer = [];
 
 var d_chat_buffer = [];
 
-MPPtrs = function (txt, lang) {
-    translate(txt, lang).then(oof => {
-        return oof
-    })
-}
-
 var chatInt1 = setInterval(function () {
     var msg = chat_buffer.shift();
-    if (msg) MPP.chat.send(MPPtrs(msg, lang))
+    if (msg) translate(msg, lang).then(oof => {
+        MPP.chat.send(oof)
+    })
 }, 2050);
 
 
