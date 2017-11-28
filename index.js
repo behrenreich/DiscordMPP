@@ -28,8 +28,7 @@ var cd_chat_buffer = [];
 
 var d_chat_buffer = [];
 
-String.prototype.translate = function (lang) {
-    txt = this
+MPPtrs = function (txt,lang) {
     translate(txt, lang).then(oof => {
         return oof
     }
@@ -38,7 +37,7 @@ String.prototype.translate = function (lang) {
 
 var chatInt1 = setInterval(function () {
     var msg = chat_buffer.shift();
-    if (msg) MPP.chat.send(msg.toString().translate(lang))
+    if (msg) MPP.chat.send(MPPtrs(msg))
 }, 2050);
 
 
