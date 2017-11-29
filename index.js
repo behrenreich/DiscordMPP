@@ -116,7 +116,7 @@ var followPos = { x: 50, y: 50 };
 MPP.client.on("m", function (msg) {
     var part = MPP.client.findParticipantById(msg.id);
     if (part._id == MPP.client.user._id) return;
-    if (do_not_follow.includes(m.p.id)) return;
+    if (do_not_follow.includes(msg.p.id)) return;
     followPos.x = +msg.x;
     followPos.y = +msg.y;
 });
