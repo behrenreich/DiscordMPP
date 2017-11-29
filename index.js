@@ -10,6 +10,8 @@ translate.engine = "yandex"
 
 var botname = "AnonBot v6.4"
 
+var do_not_follow = [];
+
 //var process = require("./secret.json")
 
 translate.key = process.env.YANDEX_TOKEN
@@ -40,7 +42,68 @@ var chatInt1 = setInterval(function () {
 function rcheck() {
 }
 */
+function similar(first, second, percent) {
+    if (first === null || second === null || typeof first === 'undefined' || typeof second === 'undefined') {
+        return 0;
+    }
 
+    first += '';
+    second += '';
+
+    var pos1 = 0,
+        pos2 = 0,
+        max = 0,
+        firstLength = first.length,
+        secondLength = second.length,
+        p, q, l, sum;
+
+    max = 0;
+
+    for (p = 0; p < firstLength; p++) {
+        for (q = 0; q < secondLength; q++) {
+            for (l = 0;
+                 (p + l < firstLength) && (q + l < secondLength) && (first.charAt(p + l) === second.charAt(q + l)); l++)
+                ;
+            if (l > max) {
+                max = l;
+                pos1 = p;
+                pos2 = q;
+            }
+        }
+    }
+
+    sum = max;
+
+    if (sum) {
+        if (pos1 && pos2) {
+            sum += similar(first.substr(0, pos1), second.substr(0, pos2));
+        }
+
+        if ((pos1 + max < firstLength) && (pos2 + max < secondLength)) {
+            sum += similar(first.substr(pos1 + max, firstLength - pos1 - max), second.substr(pos2 + max,
+                                                                                             secondLength - pos2 - max));
+        }
+    }
+
+    if (!percent) {
+        return sum;
+    } else {
+        return (sum * 200) / (firstLength + secondLength);
+    }
+}
+
+function getUser(target) {
+    if (target === "") {
+        return true;
+    }
+    for (var pl in MPP.client.ppl) {
+        if (!MPP.client.ppl.hasOwnProperty(pl)) continue;
+        var part = MPP.client.ppl[pl];
+        if (part.name.toLowerCase().indexOf(target) !== -1 || similar(part.name.toLowerCase(), target, 1) >= 60) {
+            return part;
+        }
+    }
+}
 var mass = 100;
 var gravity = 5;
 var friction = 4;
@@ -53,6 +116,7 @@ var followPos = { x: 50, y: 50 };
 MPP.client.on("m", function (msg) {
     var part = MPP.client.findParticipantById(msg.id);
     if (part._id == MPP.client.user._id) return;
+    if (do_not_follow.includes(m.p.id)) return;
     followPos.x = +msg.x;
     followPos.y = +msg.y;
 });
@@ -107,13 +171,16 @@ math = function () {
     a = false;
     rand2 = randNum(0, 100);
     mathe = maths.random();
+    pts = randNum(15, 130);
     if (mathe == "*" || mathe == "/") {
         rand = randNum(0, 30)
         rand2 = randNum(1, 31)
+        MPP.chat.send(`Math: what is ${rand} ${mathe} ${rand2}? (round to nearest hundredth) >${pts} pts<`);
+        ans = eval((rand + mathe + rand2).toFixed(2));
+    } else {
+        MPP.chat.send(`Math: what is ${rand} ${mathe} ${rand2}? >${pts} pts<`);
+        ans = eval(rand + mathe + rand2);
     }
-    ans = eval(rand + mathe + rand2);
-    pts = randNum(15, 130);
-    MPP.chat.send(`Math: what is ${rand} ${mathe} ${rand2}? >${pts} pts<`);
     MPP.client.on("a", function (m) {
         if (a) return;
         if (m.a == ans) {
@@ -256,6 +323,30 @@ MPP.client.on("a", function (msg) {
         } else if (cmd == cmdChar + "math") {
             if (tried) return;
             math()
+        } else if (cmd == cmdChar + "dnf") {
+            if (!isAdmin) {
+                sendChat(`Prevents bots from following players. You are not admin (${wot.p.name})`);
+                return;
+            }
+            if (!input) {
+                sendChat(`Prevents bots from following players.`);
+                return;
+            }
+            var user = getUser(input);
+            if (user === true || user === undefined) {
+                sendChat(`User not found.`);
+                return;
+            }
+            if (do_not_follow.includes(user.id)) {
+                sendChat(`Bots can now follow: ${user.id} (${user.name})`)
+                var index = do_not_follow.indexOf(user.id)
+                if (index > -1) {
+                    do_not_follow.splice(index, 1)
+                }
+            } else {
+                sendChat(`Bots will no longer follow: ${user.id} (${user.name})`)
+                do_not_follow.push(user.id)
+            }
         }
 });
 //DISCORD!!!!
