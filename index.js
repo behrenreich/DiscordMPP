@@ -114,9 +114,9 @@ var vel = { x: 0, y: 0 };
 var follower = "7504f8a8bb9e7c39ddbcbd27";
 var followPos = { x: 50, y: 50 };
 MPP.client.on("m", function (msg) {
-    var part = MPP.client.findParticipantById(msg.id);
+    part = MPP.client.findParticipantById(msg.id);
     if (part._id == MPP.client.user._id) return;
-    if (do_not_follow.includes(msg.p.id)) return;
+    if (do_not_follow.includes(part._id)) return;
     followPos.x = +msg.x;
     followPos.y = +msg.y;
 });
@@ -175,8 +175,13 @@ math = function () {
     if (mathe == "*" || mathe == "/") {
         rand = randNum(0, 30)
         rand2 = randNum(1, 31)
+        if(mathe=="/") {
         MPP.chat.send(`Math: what is ${rand} ${mathe} ${rand2}? (round to nearest hundredth) >${pts} pts<`);
-        ans = eval((rand + mathe + rand2).toFixed(2));
+    }else {
+        MPP.chat.send(`Math: what is ${rand} ${mathe} ${rand2}? >${pts} pts<`);
+    }
+        ans = eval((rand + mathe + rand2));
+        ans = ans.toFixed(2)
     } else {
         MPP.chat.send(`Math: what is ${rand} ${mathe} ${rand2}? >${pts} pts<`);
         ans = eval(rand + mathe + rand2);
@@ -325,11 +330,11 @@ MPP.client.on("a", function (msg) {
             math()
         } else if (cmd == cmdChar + "dnf") {
             if (!isAdmin) {
-                sendChat(`Prevents bots from following players. You are not admin (${wot.p.name})`);
+                sendChat(`Prevents bot from following players. You are not admin (${wot.p.name})`);
                 return;
             }
             if (!input) {
-                sendChat(`Prevents bots from following players.`);
+                sendChat(`Prevents bot from following players.`);
                 return;
             }
             var user = getUser(input);
@@ -338,14 +343,14 @@ MPP.client.on("a", function (msg) {
                 return;
             }
             if (do_not_follow.includes(user.id)) {
-                sendChat(`Bots can now follow: ${user.id} (${user.name})`)
-                var index = do_not_follow.indexOf(user.id)
+                sendChat(`Bot can now follow: ${user._id} (${user.name})`)
+                var index = do_not_follow.indexOf(user._id)
                 if (index > -1) {
                     do_not_follow.splice(index, 1)
                 }
             } else {
-                sendChat(`Bots will no longer follow: ${user.id} (${user.name})`)
-                do_not_follow.push(user.id)
+                sendChat(`Bot will no longer follow: ${user._id} (${user.name})`)
+                do_not_follow.push(user._id)
             }
         }
 });
