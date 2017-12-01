@@ -1,7 +1,7 @@
 {
   "name": "anon64-mpp",
-  "version": "1.0.0",
-  "description": "made my own mpp.js lol",
+  "version": "1.2.5",
+  "description": "made my own mpp.js lol OWOP temp",
   "main": "index.js",
   "scripts": {
     "start": "node bot.js",
@@ -16,7 +16,6 @@
   "dependencies": {
     "ws": "3.3.1",
     "discord.js": "11.2.1",
-    "anon64-mpp": "1.0.0",
     "translate": "1.0.0",
     "opusscript": "0.0.4",
     "request": "2.83.0",
