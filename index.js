@@ -179,8 +179,12 @@ math = function () {
         rand2 = randNum(1, 31)
         ans = eval(rand + mathe + rand2);
         if(mathe=="/") {
-        MPP.chat.send(`Math: what is ${rand} ${mathe} ${rand2}? (round to nearest hundredth) >${pts} pts<`);
-        ans = ans.toFixed(2)
+            if(ans%1!=) {
+                MPP.chat.send(`Math: what is ${rand} ${mathe} ${rand2}? (round to nearest hundredth) >${pts} pts<`);
+                ans = ans.toFixed(2)
+            }else{
+                MPP.chat.send(`Math: what is ${rand} ${mathe} ${rand2}? >${pts} pts<`);
+            }
     }else {
         MPP.chat.send(`Math: what is ${rand} ${mathe} ${rand2}? >${pts} pts<`);
     }
