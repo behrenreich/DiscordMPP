@@ -12,7 +12,7 @@ var botname = "AnonBot v6.4"
 
 var do_not_follow = [];
 
-//var process = require("./secret.json")
+var process = require("./secret.json")
 
 translate.key = process.env.YANDEX_TOKEN
 
@@ -164,7 +164,6 @@ function check(id) {
 tried = false;
 a = false;
 timeout = 0;
-var rep = `Math: what is ${rand} ${mathe} ${rand2}? >${pts} pts<`
 math = function () {
     startingT = Date.now() / 1000
     tried = true;
@@ -174,6 +173,7 @@ math = function () {
     rand2 = randNum(0, 100);
     mathe = maths.random();
     pts = randNum(15, 130);
+    var rep = `Math: what is ${rand} ${mathe} ${rand2}? >${pts} pts<`
     if (mathe == "*" || mathe == "/") {
         rand = randNum(0, 30)
         rand2 = randNum(1, 31)
