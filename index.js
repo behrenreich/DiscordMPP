@@ -172,33 +172,20 @@ math = function () {
     rand2 = randNum(0, 100);
     mathe = maths.random();
     pts = randNum(15, 130);
+            ans = eval((rand + mathe + rand2));
     if (mathe == "*" || mathe == "/") {
         rand = randNum(0, 30)
         rand2 = randNum(1, 31)
         if(mathe=="/") {
         MPP.chat.send(`Math: what is ${rand} ${mathe} ${rand2}? (round to nearest hundredth) >${pts} pts<`);
+        ans = ans.toFixed(2)
     }else {
         MPP.chat.send(`Math: what is ${rand} ${mathe} ${rand2}? >${pts} pts<`);
     }
-        ans = eval((rand + mathe + rand2));
-        ans = ans.toFixed(2)
     } else {
         MPP.chat.send(`Math: what is ${rand} ${mathe} ${rand2}? >${pts} pts<`);
         ans = eval(rand + mathe + rand2);
     }
-    MPP.client.on("a", function (m) {
-        if (a) return;
-        if (m.a == ans) {
-            if (!check(m.p._id)) {
-                people[m.p._id] = { pts: 0 };
-            }
-            MPP.chat.send(`Math: correct! (that took you ${((Date.now() / 1000) - startingT).toFixed(3)} seconds)`);
-            a = true;
-            tried = false;
-            MPP.client._events.a.pop();
-            people[m.p._id].pts += pts;
-        }
-    });
     setTimeout(function () {
         if (!a) {
             MPP.chat.send(`Times up! Answer was ${ans}`);
@@ -207,7 +194,20 @@ math = function () {
         }
     }, 22000)
 }
-
+MPP.client.on("a", function (m) {
+    if (a) return;
+    if(!tried) return;
+    if (m.a == ans) {
+        if (!check(m.p._id)) {
+            people[m.p._id] = { pts: 0 };
+        }
+        MPP.chat.send(`Math: correct! (that took you ${((Date.now() / 1000) - startingT).toFixed(3)} seconds)`);
+        a = true;
+        tried = false;
+        MPP.client._events.a.pop();
+        people[m.p._id].pts += pts;
+    }
+});
 function sendChat(msg) {
     if (lang == "en") {
         msg.match(/.{1,508}/g).forEach(function (x, i) {
