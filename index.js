@@ -6,6 +6,8 @@ const translate = require('translate');
 
 var Client = require("./AMPP.js/Client.js")
 
+var os = require('os');
+
 translate.engine = "yandex"
 
 var botname = "AnonBot v6.4"
