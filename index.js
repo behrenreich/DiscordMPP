@@ -18,7 +18,7 @@ translate.key = process.env.YANDEX_TOKEN
 
 var bot = new Discord.Client();
 
-var lang = "sv";
+var lang = "en";
 
 var start = Math.round(Date.now() / 1000)
 
@@ -195,7 +195,7 @@ math = function () {
     }
     timeout = setTimeout(function () {
         if (!a) {
-            sendChat(`Times up! Answer was ${ans}`);
+            MPP.chat.send(`Times up! Answer was ${ans}`);
             tried = false;
         }
     }, 22000)
@@ -208,7 +208,7 @@ MPP.client.on("a", function (m) {
             people[m.p._id] = { pts: 0 };
         }
         clearTimeout(timeout)
-        sendChat(`Math: correct! (that took you ${((Date.now() / 1000) - startingT).toFixed(3)} seconds)`);
+        MPP.chat.send(`Math: correct! (that took you ${((Date.now() / 1000) - startingT).toFixed(3)} seconds)`);
         a = true;
         tried = false;
         people[m.p._id].pts += pts;
