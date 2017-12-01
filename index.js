@@ -172,10 +172,10 @@ math = function () {
     rand2 = randNum(0, 100);
     mathe = maths.random();
     pts = randNum(15, 130);
-            ans = eval((rand + mathe + rand2));
     if (mathe == "*" || mathe == "/") {
         rand = randNum(0, 30)
         rand2 = randNum(1, 31)
+        ans = eval(rand + mathe + rand2);
         if(mathe=="/") {
         MPP.chat.send(`Math: what is ${rand} ${mathe} ${rand2}? (round to nearest hundredth) >${pts} pts<`);
         ans = ans.toFixed(2)
