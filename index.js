@@ -204,6 +204,7 @@ MPP.client.on("a", function (m) {
         a = true;
         tried = false;
         people[m.p._id].pts += pts;
+        ans = ""
     }
 });
 function sendChat(msg) {
