@@ -165,7 +165,6 @@ tried = false;
 a = false;
 timeout = 0;
 math = function () {
-    clearTimeout(timeout)
     startingT = Date.now() / 1000
     tried = true;
     maths = "/*-+".split("");
@@ -206,6 +205,7 @@ MPP.client.on("a", function (m) {
         if (!check(m.p._id)) {
             people[m.p._id] = { pts: 0 };
         }
+        clearTimeout(timeout)
         MPP.chat.send(`Math: correct! (that took you ${((Date.now() / 1000) - startingT).toFixed(3)} seconds)`);
         a = true;
         tried = false;
