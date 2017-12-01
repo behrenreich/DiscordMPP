@@ -22,7 +22,7 @@ var lang = "en";
 
 var start = Math.round(Date.now() / 1000)
 
-MPP.client.setChannel("lolwutsecretlobbybackdoor")
+MPP.client.setChannel("lobby")
 
 var chat_buffer = [];
 
@@ -167,9 +167,9 @@ timeout = 0;
 math = function () {
     startingT = Date.now() / 1000
     tried = true;
+    a = false;
     maths = "/*-+".split("");
     rand = randNum(0, 100);
-    a = false;
     rand2 = randNum(0, 100);
     mathe = maths.random();
     pts = randNum(15, 130);
