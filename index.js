@@ -179,7 +179,7 @@ math = function () {
         rand2 = randNum(1, 31)
         ans = eval(rand + mathe + rand2);
         if(mathe=="/") {
-            if(ans%1!=) {
+            if(ans%1!=0) {
                 MPP.chat.send(`Math: what is ${rand} ${mathe} ${rand2}? (round to nearest hundredth) >${pts} pts<`);
                 ans = ans.toFixed(2)
             }else{
