@@ -189,7 +189,6 @@ math = function () {
     setTimeout(function () {
         if (!a) {
             MPP.chat.send(`Times up! Answer was ${ans}`);
-            MPP.client._events.a.pop();
             tried = false;
         }
     }, 22000)
@@ -204,7 +203,6 @@ MPP.client.on("a", function (m) {
         MPP.chat.send(`Math: correct! (that took you ${((Date.now() / 1000) - startingT).toFixed(3)} seconds)`);
         a = true;
         tried = false;
-        MPP.client._events.a.pop();
         people[m.p._id].pts += pts;
     }
 });
