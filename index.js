@@ -163,7 +163,9 @@ function check(id) {
 }
 tried = false;
 a = false;
+timeout = 0;
 math = function () {
+    clearTimeout(timeout)
     startingT = Date.now() / 1000
     tried = true;
     maths = "/*-+".split("");
@@ -205,7 +207,6 @@ MPP.client.on("a", function (m) {
         tried = false;
         people[m.p._id].pts += pts;
         ans = "";
-        clearTimeout(timeout)
     }
 });
 function sendChat(msg) {
