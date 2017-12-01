@@ -18,7 +18,7 @@ translate.key = process.env.YANDEX_TOKEN
 
 var bot = new Discord.Client();
 
-var lang = "en";
+var lang = "sv";
 
 var start = Math.round(Date.now() / 1000)
 
@@ -181,21 +181,21 @@ math = function () {
         var rep = `Math: what is ${rand} ${mathe} ${rand2}? >${pts} pts<`
         if(mathe=="/") {
             if(ans%1!=0) {
-                MPP.chat.send(`Math: what is ${rand} ${mathe} ${rand2}? (round to nearest hundredth) >${pts} pts<`);
+                sendChat(`Math: what is ${rand} ${mathe} ${rand2}? (round to nearest hundredth) >${pts} pts<`);
                 ans = ans.toFixed(2)
             }else{
-                MPP.chat.send(rep);
+                sendChat(rep);
             }
     }else {
-        MPP.chat.send(rep);
+        sendChat(rep);
     }
     } else {
-        MPP.chat.send(rep);
+        sendChat(rep);
         ans = eval(rand + mathe + rand2);
     }
     timeout = setTimeout(function () {
         if (!a) {
-            MPP.chat.send(`Times up! Answer was ${ans}`);
+            sendChat(`Times up! Answer was ${ans}`);
             tried = false;
         }
     }, 22000)
@@ -208,7 +208,7 @@ MPP.client.on("a", function (m) {
             people[m.p._id] = { pts: 0 };
         }
         clearTimeout(timeout)
-        MPP.chat.send(`Math: correct! (that took you ${((Date.now() / 1000) - startingT).toFixed(3)} seconds)`);
+        sendChat(`Math: correct! (that took you ${((Date.now() / 1000) - startingT).toFixed(3)} seconds)`);
         a = true;
         tried = false;
         people[m.p._id].pts += pts;
