@@ -186,7 +186,7 @@ math = function () {
         MPP.chat.send(`Math: what is ${rand} ${mathe} ${rand2}? >${pts} pts<`);
         ans = eval(rand + mathe + rand2);
     }
-    setTimeout(function () {
+    timeout = setTimeout(function () {
         if (!a && !tried) {
             MPP.chat.send(`Times up! Answer was ${ans}`);
             tried = false;
@@ -204,7 +204,8 @@ MPP.client.on("a", function (m) {
         a = true;
         tried = false;
         people[m.p._id].pts += pts;
-        ans = ""
+        ans = "";
+        clearTimeout(timeout)
     }
 });
 function sendChat(msg) {
