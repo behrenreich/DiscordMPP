@@ -187,7 +187,7 @@ math = function () {
         ans = eval(rand + mathe + rand2);
     }
     setTimeout(function () {
-        if (!a) {
+        if (!a && !tried) {
             MPP.chat.send(`Times up! Answer was ${ans}`);
             tried = false;
         }
