@@ -164,6 +164,7 @@ function check(id) {
 tried = false;
 a = false;
 timeout = 0;
+var rep = `Math: what is ${rand} ${mathe} ${rand2}? >${pts} pts<`
 math = function () {
     startingT = Date.now() / 1000
     tried = true;
@@ -182,13 +183,13 @@ math = function () {
                 MPP.chat.send(`Math: what is ${rand} ${mathe} ${rand2}? (round to nearest hundredth) >${pts} pts<`);
                 ans = ans.toFixed(2)
             }else{
-                MPP.chat.send(`Math: what is ${rand} ${mathe} ${rand2}? >${pts} pts<`);
+                MPP.chat.send(rep);
             }
     }else {
-        MPP.chat.send(`Math: what is ${rand} ${mathe} ${rand2}? >${pts} pts<`);
+        MPP.chat.send(rep);
     }
     } else {
-        MPP.chat.send(`Math: what is ${rand} ${mathe} ${rand2}? >${pts} pts<`);
+        MPP.chat.send(rep);
         ans = eval(rand + mathe + rand2);
     }
     timeout = setTimeout(function () {
