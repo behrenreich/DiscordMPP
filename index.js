@@ -12,7 +12,7 @@ var botname = "AnonBot v6.4"
 
 var do_not_follow = [];
 
-var process = require("./secret.json")
+//var process = require("./secret.json")
 
 translate.key = process.env.YANDEX_TOKEN
 
