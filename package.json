@@ -1,6 +1,6 @@
 {
   "name": "anon64-mpp",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "description": "made my own mpp.js lol MPP fixed",
   "main": "index.js",
   "scripts": {
