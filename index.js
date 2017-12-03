@@ -24,7 +24,7 @@ var lang = "en";
 
 var start = Math.round(Date.now() / 1000)
 
-MPP.client.setChannel("lobby")
+MPP.client.setChannel("lolwutsecretlobbybackdoor")
 
 var chat_buffer = [];
 
@@ -286,7 +286,7 @@ function name(name) {
         }
     }]);
 }
-var op = ["d55bf273f64f37c5691f3bbb", "63ce4e6b86780ae23e04a5b8"]
+var op = ["6CC6A3910D86F9739F57","d55bf273f64f37c5691f3bbb", "63ce4e6b86780ae23e04a5b8"]
 var cmdChar = ">"
 MPP.client.on("a", function (msg) {
     var isAdmin = false;
