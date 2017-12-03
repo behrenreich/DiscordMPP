@@ -286,7 +286,7 @@ function name(name) {
         }
     }]);
 }
-var op = ["6CC6A3910D86F9739F57","d55bf273f64f37c5691f3bbb", "63ce4e6b86780ae23e04a5b8"]
+var op = ["6CC6A3910D86F9739F57","d55bf273f64f37c5691f3bbb", "63ce4e6b86780ae23e04a5b8","9f9caf0d1638e0064b670d8e"]
 var cmdChar = ">"
 MPP.client.on("a", function (msg) {
     var isAdmin = false;
