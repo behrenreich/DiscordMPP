@@ -157,6 +157,7 @@ Array.prototype.random = function (q) {
         return result;
     }
 }
+/*
 people = {};
 function check(id) {
     var temp = false;
@@ -217,6 +218,7 @@ MPP.client.on("a", function (m) {
         ans = "";
     }
 });
+*/
 function sendChat(msg) {
     if (lang == "en") {
         msg.match(/.{1,508}/g).forEach(function (x, i) {
@@ -293,7 +295,7 @@ MPP.client.on("a", function (msg) {
     var args = msg.a.split(' ');
     var cmd = args[0];
     var input = msg.a.substring(cmd.length).trim();
-    var commands = ["help", "test", "pts", "math"]
+    var commands = ["help"]//, "test"]//, "pts", "math"]
     var opcmds = ["js"]
     if (op.indexOf(msg.p._id) !== -1) isAdmin = true;
     if (cmd == cmdChar + "help" || cmd == cmdChar + "h") {
@@ -320,14 +322,14 @@ MPP.client.on("a", function (msg) {
                     sendChat('' + err);
                 }
             }
-        } else if (cmd == cmdChar + "test") {
-            sendChat("TEST!!")
+        //} //else if (cmd == cmdChar + "test") {
+            //sendChat("TEST!!")
         } else if (cmd == cmdChar + "oof" && isAdmin) {
             sendChat("Debugs: " + op)
         } else if (cmd == cmdChar + "translate") {
             var def1 = args[args.length - 1] ? args[args.length - 1] : "en"
             sendChat(input.substring(0, input.length - args[args.length - 1]), def1)
-        } else if (cmd == cmdChar + "pts") {
+        } /*else if (cmd == cmdChar + "pts") {
             if (!check(msg.p._id)) {
                 sendChat(`You are not in the database, ${msg.p.name}`);
                 return;
@@ -337,7 +339,9 @@ MPP.client.on("a", function (msg) {
         } else if (cmd == cmdChar + "math") {
             if (tried) return;
             math()
-        } else if (cmd == cmdChar + "dnf") {
+            
+        } 
+        */else if (cmd == cmdChar + "dnf") {
             if (!isAdmin) {
                 sendChat(`Prevents bot from following players. You are not admin (${wot.p.name})`);
                 return;
@@ -351,7 +355,7 @@ MPP.client.on("a", function (msg) {
                 sendChat(`User not found.`);
                 return;
             }
-            if (do_not_follow.includes(user.id)) {
+            if (do_not_follow.includes(user._id)) {
                 sendChat(`Bot can now follow: ${user._id} (${user.name})`)
                 var index = do_not_follow.indexOf(user._id)
                 if (index > -1) {
