@@ -316,6 +316,7 @@ MPP.client.on("a", function (msg) {
     } else
         if (cmd == cmdChar + "js") {
             if (isAdmin) {
+                uptime = sectoform(Math.round(Date.now() / 1000) - start)
                 try {
                     sendChat("Console: " + eval(input));
                 } catch (err) {
@@ -425,6 +426,7 @@ bot.on("ready", () => {
         if (command == "js") {
             if (isAdmind) {
                 try {
+uptime = sectoform(Math.round(Date.now() / 1000) - start)
                     cdChat("Console: " + eval(input));
                 } catch (err) {
                     cdChat('' + err);
