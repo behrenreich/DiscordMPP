@@ -10,7 +10,7 @@ var os = require('os');
 
 translate.engine = "yandex"
 
-var botname = "AnonBot v6.4"
+var botname = "BlankBot v0.0"
 
 var do_not_follow = [];
 
@@ -435,7 +435,7 @@ bot.on("ready", () => {
 })
 count = 0;
 function name() {
-    names = { 0: `${botname} [discord.gg/6gnK95G]`, 1: `Uptime: ${sectoform(Math.round(Date.now() / 1000) - start)}`, 2: `${botname} [${cmdChar}help]` }
+    names = { 0: `${botname} [discord.gg/6gnK95G]`}//, 1: `Uptime: ${sectoform(Math.round(Date.now() / 1000) - start)}`, 2: `${botname} [${cmdChar}help]` }
     MPP.client.sendArray([{
         m: "userset",
         set: {
