@@ -10,7 +10,7 @@ var os = require('os');
 
 translate.engine = "yandex"
 
-var botname = "BlankBot v0.0"
+var botname = "AnonBot v6.4"
 
 var do_not_follow = [];
 
@@ -64,7 +64,7 @@ function similar(first, second, percent) {
     for (p = 0; p < firstLength; p++) {
         for (q = 0; q < secondLength; q++) {
             for (l = 0;
-                 (p + l < firstLength) && (q + l < secondLength) && (first.charAt(p + l) === second.charAt(q + l)); l++)
+                (p + l < firstLength) && (q + l < secondLength) && (first.charAt(p + l) === second.charAt(q + l)); l++)
                 ;
             if (l > max) {
                 max = l;
@@ -83,7 +83,7 @@ function similar(first, second, percent) {
 
         if ((pos1 + max < firstLength) && (pos2 + max < secondLength)) {
             sum += similar(first.substr(pos1 + max, firstLength - pos1 - max), second.substr(pos2 + max,
-                                                                                             secondLength - pos2 - max));
+                secondLength - pos2 - max));
         }
     }
 
@@ -157,7 +157,6 @@ Array.prototype.random = function (q) {
         return result;
     }
 }
-/*
 people = {};
 function check(id) {
     var temp = false;
@@ -182,16 +181,16 @@ math = function () {
         rand2 = randNum(1, 31)
         ans = eval(rand + mathe + rand2);
         var rep = `Math: what is ${rand} ${mathe} ${rand2}? >${pts} pts<`
-        if(mathe=="/") {
-            if(ans%1!=0) {
+        if (mathe == "/") {
+            if (ans % 1 != 0) {
                 sendChat(`Math: what is ${rand} ${mathe} ${rand2}? (round to nearest hundredth) >${pts} pts<`);
                 ans = ans.toFixed(2)
-            }else{
+            } else {
                 sendChat(rep);
             }
-    }else {
-        sendChat(rep);
-    }
+        } else {
+            sendChat(rep);
+        }
     } else {
         sendChat(rep);
         ans = eval(rand + mathe + rand2);
@@ -205,7 +204,7 @@ math = function () {
 }
 MPP.client.on("a", function (m) {
     if (a) return;
-    if(!tried) return;
+    if (!tried) return;
     if (m.a == ans) {
         if (!check(m.p._id)) {
             people[m.p._id] = { pts: 0 };
@@ -218,7 +217,6 @@ MPP.client.on("a", function (m) {
         ans = "";
     }
 });
-*/
 function sendChat(msg) {
     if (lang == "en") {
         msg.match(/.{1,508}/g).forEach(function (x, i) {
@@ -288,14 +286,14 @@ function name(name) {
         }
     }]);
 }
-var op = ["6CC6A3910D86F9739F57","d55bf273f64f37c5691f3bbb", "63ce4e6b86780ae23e04a5b8","9f9caf0d1638e0064b670d8e"]
+var op = ["6CC6A3910D86F9739F57", "d55bf273f64f37c5691f3bbb", "63ce4e6b86780ae23e04a5b8", "9f9caf0d1638e0064b670d8e"]
 var cmdChar = ">"
 MPP.client.on("a", function (msg) {
     var isAdmin = false;
     var args = msg.a.split(' ');
     var cmd = args[0];
     var input = msg.a.substring(cmd.length).trim();
-    var commands = ["help"]//, "test"]//, "pts", "math"]
+    var commands = ["help", "test", "pts", "math"]
     var opcmds = ["js"]
     if (op.indexOf(msg.p._id) !== -1) isAdmin = true;
     if (cmd == cmdChar + "help" || cmd == cmdChar + "h") {
@@ -316,21 +314,20 @@ MPP.client.on("a", function (msg) {
     } else
         if (cmd == cmdChar + "js") {
             if (isAdmin) {
-                uptime = sectoform(Math.round(Date.now() / 1000) - start)
                 try {
                     sendChat("Console: " + eval(input));
                 } catch (err) {
                     sendChat('' + err);
                 }
             }
-        //} //else if (cmd == cmdChar + "test") {
-            //sendChat("TEST!!")
+        } else if (cmd == cmdChar + "test") {
+            sendChat("TEST!!")
         } else if (cmd == cmdChar + "oof" && isAdmin) {
             sendChat("Debugs: " + op)
         } else if (cmd == cmdChar + "translate") {
             var def1 = args[args.length - 1] ? args[args.length - 1] : "en"
             sendChat(input.substring(0, input.length - args[args.length - 1]), def1)
-        } /*else if (cmd == cmdChar + "pts") {
+        } else if (cmd == cmdChar + "pts") {
             if (!check(msg.p._id)) {
                 sendChat(`You are not in the database, ${msg.p.name}`);
                 return;
@@ -340,9 +337,7 @@ MPP.client.on("a", function (msg) {
         } else if (cmd == cmdChar + "math") {
             if (tried) return;
             math()
-            
-        } 
-        */else if (cmd == cmdChar + "dnf") {
+        } else if (cmd == cmdChar + "dnf") {
             if (!isAdmin) {
                 sendChat(`Prevents bot from following players. You are not admin (${wot.p.name})`);
                 return;
@@ -356,7 +351,7 @@ MPP.client.on("a", function (msg) {
                 sendChat(`User not found.`);
                 return;
             }
-            if (do_not_follow.includes(user._id)) {
+            if (do_not_follow.includes(user.id)) {
                 sendChat(`Bot can now follow: ${user._id} (${user.name})`)
                 var index = do_not_follow.indexOf(user._id)
                 if (index > -1) {
@@ -375,7 +370,8 @@ bot.on("ready", () => {
     bot.user.setGame(`on ${bot.guilds.size} servers`);
     MPP.client.on("a", function (msg) {
         if (msg.p._id == MPP.client.getOwnParticipant()._id) return;
-        dChat("391054842111590402", `**${msg.p.name.split("").join("\u034f")}** (\`${msg.p._id.substring(0, 4)}\`): ${msg.a}`)
+        if (msg.a.includes("@everyone")) return;
+        dChat("381521631140380672", `**${msg.p.name.split("").join("\u034f")}** (\`${msg.p._id.substring(0, 4)}\`): ${msg.a}`)
     })
 })
 
@@ -392,7 +388,7 @@ bot.on("ready", () => {
 
         if (message.author.bot) return;
 
-        if (message.channel.id == "391054842111590402") {
+        if (message.channel.id == "381521631140380672") {
             if (!MPP.client.isConnected()) return;
             if (message.content.startsWith(".") || message.content.startsWith("/") || message.content.startsWith(">") || message.content.startsWith("<") || message.content.startsWith("^") || message.content.startsWith("?") || message.content.startsWith("!") || message.content.startsWith("/")) {
                 MPP.client.sendArray([{
@@ -426,7 +422,6 @@ bot.on("ready", () => {
         if (command == "js") {
             if (isAdmind) {
                 try {
-uptime = sectoform(Math.round(Date.now() / 1000) - start)
                     cdChat("Console: " + eval(input));
                 } catch (err) {
                     cdChat('' + err);
@@ -437,7 +432,7 @@ uptime = sectoform(Math.round(Date.now() / 1000) - start)
 })
 count = 0;
 function name() {
-    names = { 0: `${botname} [discord.gg/6gnK95G]`}//, 1: `Uptime: ${sectoform(Math.round(Date.now() / 1000) - start)}`, 2: `${botname} [${cmdChar}help]` }
+    names = { 0: `${botname} [discord.gg/6gnK95G]`, 1: `Uptime: ${sectoform(Math.round(Date.now() / 1000) - start)}`, 2: `${botname} [${cmdChar}help]` }
     MPP.client.sendArray([{
         m: "userset",
         set: {
@@ -446,5 +441,5 @@ function name() {
     }]);
     if (count >= Object.keys(names).length) count = 0;
 }
-setInterval(name, 2100)
+setInterval(name, 3000)
 bot.login(process.env.BOT_TOKEN)
