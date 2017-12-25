@@ -24,7 +24,7 @@ var lang = "en";
 
 var start = Math.round(Date.now() / 1000)
 
-MPP.client.setChannel("lolwutsecretlobbybackdoor")
+MPP.client.setChannel("lobby2")
 
 var chat_buffer = [];
 
