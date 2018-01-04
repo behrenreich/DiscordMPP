@@ -1,3 +1,4 @@
+try {
 const MPP = require("anon64-mpp")
 
 const Discord = require("discord.js");
@@ -443,3 +444,6 @@ function name() {
 }
 setInterval(name, 3000)
 bot.login(process.env.BOT_TOKEN)
+}catch(e) {
+dChat("391054842111590402", `\`C R I T I C A L\` ***E R R O R***: ${e}`)
+}
