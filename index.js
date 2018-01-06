@@ -366,7 +366,7 @@ MPP.client.on("a", function (msg) {
 //DISCORD!!!!
 bot.on("ready", () => {
     console.log(`Bot has started, with ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} guilds.`);
-    sendChat(`Bot has started, with ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} guilds.`, lang)
+    //sendChat(`Bot has started, with ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} guilds.`, lang)
     bot.user.setGame(`on ${bot.guilds.size} servers`);
     MPP.client.on("a", function (msg) {
         if (msg.p._id == MPP.client.getOwnParticipant()._id) return;
