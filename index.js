@@ -1,4 +1,3 @@
-try {
 const MPP = require("anon64-mpp")
 
 const Discord = require("discord.js");
@@ -288,7 +287,7 @@ function name(name) {
     }]);
 }
 var op = ["6CC6A3910D86F9739F57", "d55bf273f64f37c5691f3bbb", "63ce4e6b86780ae23e04a5b8", "9f9caf0d1638e0064b670d8e"]
-var cmdChar = ">"
+var cmdChar = "/"
 MPP.client.on("a", function (msg) {
     var isAdmin = false;
     var args = msg.a.split(' ');
@@ -444,6 +443,3 @@ function name() {
 }
 setInterval(name, 3000)
 bot.login(process.env.BOT_TOKEN)
-}catch(e) {
-dChat("391054842111590402", `\`C R I T I C A L\` ***E R R O R***: ${e}`)
-}
