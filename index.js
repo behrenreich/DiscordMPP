@@ -388,7 +388,7 @@ bot.on("ready", () => {
 
         if (message.author.bot) return;
 
-        if (message.channel.id == "391054842111590402") {
+        if (message.channel.id == "399318211042213898") {
             if (!MPP.client.isConnected()) return;
             if (message.content.startsWith(".") || message.content.startsWith("/") || message.content.startsWith(">") || message.content.startsWith("<") || message.content.startsWith("^") || message.content.startsWith("?") || message.content.startsWith("!") || message.content.startsWith("/")) {
                 MPP.client.sendArray([{
@@ -432,7 +432,7 @@ bot.on("ready", () => {
 })
 count = 0;
 function name() {
-    names = { 0: `${botname} [discord.gg/6gnK95G]`, 1: `Uptime: ${sectoform(Math.round(Date.now() / 1000) - start)}`, 2: `${botname} [${cmdChar}help]` }
+    names = { 0: `${botname} [discord.gg/AastTwg]`, 1: `Uptime: ${sectoform(Math.round(Date.now() / 1000) - start)}`, 2: `${botname} [${cmdChar}help]` }
     MPP.client.sendArray([{
         m: "userset",
         set: {
