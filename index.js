@@ -351,7 +351,7 @@ MPP.client.on("a", function (msg) {
                 sendChat(`User not found.`);
                 return;
             }
-            if (do_not_follow.includes(user.id)) {
+            if (do_not_follow.includes(user._id)) {
                 sendChat(`Bot can now follow: ${user._id} (${user.name})`)
                 var index = do_not_follow.indexOf(user._id)
                 if (index > -1) {
