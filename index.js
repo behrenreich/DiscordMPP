@@ -14,7 +14,7 @@ var botname = "AnonBot v6.4"
 
 var do_not_follow = [];
 
-//var process = require("./secret.json")
+var process = require("./secret.json")
 
 translate.key = process.env.YANDEX_TOKEN
 
@@ -371,7 +371,7 @@ bot.on("ready", () => {
     MPP.client.on("a", function (msg) {
         if (msg.p._id == MPP.client.getOwnParticipant()._id) return;
         if (msg.a.includes("@everyone")) return;
-        dChat("391054842111590402", `**${msg.p.name.split("").join("\u034f")}** (\`${msg.p._id.substring(0, 4)}\`): ${msg.a}`)
+        dChat("399318211042213898", `**${msg.p.name.split("").join("\u034f")}** (\`${msg.p._id.substring(0, 4)}\`): ${msg.a}`)
     })
 })
 
