@@ -315,9 +315,11 @@ MPP.client.on("a", function (msg) {
     } else
         if (cmd == cmdChar + "js") {
             if (isAdmin) {
-                if (eval("typeof " + input) == 'function') {
-sendChat(jserr)
-                } else {
+                try {
+                    if (eval("typeof " + input) == 'function') {
+                        sendChat(jserr)
+                    }
+                } catch (e) {
                     try {
                         sendChat("Console: " + eval(input));
                     } catch (err) {
