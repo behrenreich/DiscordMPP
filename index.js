@@ -288,6 +288,7 @@ function name(name) {
 }
 var op = ["6CC6A3910D86F9739F57", "d55bf273f64f37c5691f3bbb", "63ce4e6b86780ae23e04a5b8", "9f9caf0d1638e0064b670d8e"]
 var cmdChar = "/"
+var jserr = "fak no >:D"
 MPP.client.on("a", function (msg) {
     var isAdmin = false;
     var args = msg.a.split(' ');
@@ -314,10 +315,14 @@ MPP.client.on("a", function (msg) {
     } else
         if (cmd == cmdChar + "js") {
             if (isAdmin) {
-                try {
-                    sendChat("Console: " + eval(input));
-                } catch (err) {
-                    sendChat('' + err);
+                if (eval("typeof " + input) == 'function') {
+sendChat(jserr)
+                } else {
+                    try {
+                        sendChat("Console: " + eval(input));
+                    } catch (err) {
+                        sendChat('' + err);
+                    }
                 }
             }
         } else if (cmd == cmdChar + "test") {
