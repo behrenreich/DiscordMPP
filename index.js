@@ -318,6 +318,8 @@ MPP.client.on("a", function (msg) {
                 try {
                     if (eval("typeof " + input) == 'function') {
                         sendChat(jserr)
+                    } else {
+                        throw new Error("not function!")
                     }
                 } catch (e) {
                     try {
