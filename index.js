@@ -10,7 +10,7 @@ var os = require('os');
 
 translate.engine = "yandex"
 
-var botname = "AnonBot v6.4"
+var botname = "AnonBot v6.4 R3"
 
 var do_not_follow = [];
 
