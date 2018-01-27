@@ -1,5 +1,5 @@
 const MPP = require("anon64-mpp")
-//throw new Error("O O F")
+
 const Discord = require("discord.js");
 
 const translate = require('translate');
