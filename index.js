@@ -10,7 +10,7 @@ var os = require('os');
 
 translate.engine = "yandex"
 
-var botname = "AnonBot v6.4 R3"
+var botname = "AnonBot v6.4 R4"
 
 var do_not_follow = [];
 
@@ -380,7 +380,7 @@ bot.on("ready", () => {
     MPP.client.on("a", function (msg) {
         if (msg.p._id == MPP.client.getOwnParticipant()._id) return;
         if (msg.a.includes("@everyone")) return;
-        dChat("399354581559017484", `**${msg.p.name.split("").join("\u034f")}** (\`${msg.p._id.substring(0, 4)}\`): ${msg.a}`)
+        dChat("406641073683693569", `**${msg.p.name.split("").join("\u034f")}** (\`${msg.p._id.substring(0, 4)}\`): ${msg.a}`)
     })
 })
 
@@ -397,7 +397,7 @@ bot.on("ready", () => {
 
         if (message.author.bot) return;
 
-        if (message.channel.id == "399354581559017484") {
+        if (message.channel.id == "406641073683693569") {
             if (!MPP.client.isConnected()) return;
             if (message.content.startsWith(".") || message.content.startsWith("/") || message.content.startsWith(">") || message.content.startsWith("<") || message.content.startsWith("^") || message.content.startsWith("?") || message.content.startsWith("!") || message.content.startsWith("/")) {
                 MPP.client.sendArray([{
