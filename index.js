@@ -208,6 +208,9 @@ MPP.client.on("a", function (m) {
     var inp = m.a;
     if(m.a.startsWith(".")) inp = "0"+inp;
     if(ans % 1 != 0 && ans.endsWith("0")) {
+ans = ans.substring(0,ans.length-1)
+    }
+        if(inp % 1 != 0 && inp.endsWith("0")) {
 inp = m.a.substring(0,m.a.length-1)
     }
     if (inp == ans) {
