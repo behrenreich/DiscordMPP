@@ -20,11 +20,11 @@ translate.key = process.env.YANDEX_TOKEN
 
 var bot = new Discord.Client();
 
-var lang = "en";
+var lang = "sv";
 
 var start = Math.round(Date.now() / 1000)
 
-MPP.client.setChannel("lolwutsecretlobbybackdoor")
+MPP.client.setChannel("lobby")
 
 var chat_buffer = [];
 
@@ -205,7 +205,12 @@ math = function () {
 MPP.client.on("a", function (m) {
     if (a) return;
     if (!tried) return;
-    if (m.a == ans) {
+    var inp = m.a;
+    if(m.a.startsWith(".")) inp = "0"+inp;
+    if(ans % 1 != 0 && ans.endsWith("0")) {
+inp = m.a.substring(0,m.a.length-1)
+    }
+    if (inp == ans) {
         if (!check(m.p._id)) {
             people[m.p._id] = { pts: 0 };
         }
