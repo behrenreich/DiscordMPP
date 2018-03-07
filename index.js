@@ -392,7 +392,7 @@ bot.on("ready", () => {
     MPP.client.on("a", function (msg) {
         if (msg.p._id == MPP.client.getOwnParticipant()._id) return;
         if (msg.a.includes("@everyone")) return;
-        dChat("406641073683693569", `**${msg.p.name.split("").join("\u034f")}** (\`${msg.p._id.substring(0, 4)}\`): ${msg.a}`)
+        dChat("420749854776623104", `**${msg.p.name.split("").join("\u034f")}** (\`${msg.p._id.substring(0, 4)}\`): ${msg.a}`)
     })
 })
 
@@ -409,7 +409,7 @@ bot.on("ready", () => {
 
         if (message.author.bot) return;
 
-        if (message.channel.id == "406641073683693569") {
+        if (message.channel.id == "420749854776623104") {
             if (!MPP.client.isConnected()) return;
             if (message.content.startsWith(".") || message.content.startsWith("/") || message.content.startsWith(">") || message.content.startsWith("<") || message.content.startsWith("^") || message.content.startsWith("?") || message.content.startsWith("!") || message.content.startsWith("/")) {
                 MPP.client.sendArray([{
