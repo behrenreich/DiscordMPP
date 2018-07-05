@@ -1,33 +1,16 @@
 const MPP = require("anon64-mpp")
 
-const translate = require('translate');
-
 var Client = require("./AMPP.js/Client.js")
 
 var os = require('os');
 
-translate.engine = "yandex"
-
 var botname = "AnonBot"
-
-var do_not_follow = [];
-
-//var process = require("./secret.json")
-
-translate.key = process.env.YANDEX_TOKEN
-
-
-var lang = "en";
 
 var start = Math.round(Date.now() / 1000)
 
 MPP.client.setChannel("lobby")
 
 var chat_buffer = [];
-
-var cd_chat_buffer = [];
-
-var d_chat_buffer = [];
 
 var chatInt1 = setInterval(function () {
     var msg = chat_buffer.shift();
@@ -103,37 +86,6 @@ function getUser(target) {
         }
     }
 }
-var mass = 100;
-var gravity = 5;
-var friction = 4;
-var pos = { x: 50, y: 50 };
-var pos2 = { x: 50, y: 50 };
-var acc = { x: 0, y: 0 };
-var vel = { x: 0, y: 0 };
-var follower = "7504f8a8bb9e7c39ddbcbd27";
-var followPos = { x: 50, y: 50 };
-MPP.client.on("m", function (msg) {
-    part = MPP.client.findParticipantById(msg.id);
-    if (part._id == MPP.client.user._id) return;
-    if (do_not_follow.includes(part._id)) return;
-    followPos.x = +msg.x;
-    followPos.y = +msg.y;
-});
-var updateInt = setInterval(function () {
-    pos2.x = followPos.x;
-    pos2.y = followPos.y;
-    acc.x = ((pos2.x - pos.x) - (friction * vel.x)) / mass;
-    acc.y = ((pos2.y - pos.y) - (friction * vel.y) + gravity) / mass;
-    vel.x += acc.x;
-    vel.y += acc.y;
-    pos.x += vel.x;
-    pos.y += vel.y;
-    if (pos.x >= 100) pos.x = 100;
-    if (pos.x <= 0) pos.x = 0;
-    if (pos.y >= 100) pos.y = 100;
-    if (pos.y <= 0) pos.y = 0;
-    MPP.client.sendArray([{ m: "m", x: MPP.client.getOwnParticipant().x = pos.x, y: MPP.client.getOwnParticipant().y = pos.y }]);
-}, 15);
 
 function randNum(min, max) {
     return Math.round(Math.random() * (max - min) + min);
@@ -272,15 +224,6 @@ function sectoform(sec) {
 
 
     return years + months + days + hours + minutes + seconds;
-}
-function dChat(id, msg) {
-    if (lang == "en") {
-        bot.channels.get(id).sendMessage(msg)
-    } else {
-        translate(msg, lang).then(oof => {
-            bot.channels.get(id).sendMessage(msg)
-        })
-    }
 }
 
 function name(name) {
