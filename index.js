@@ -16,7 +16,6 @@ var do_not_follow = [];
 
 translate.key = process.env.YANDEX_TOKEN
 
-var bot = new Discord.Client();
 
 var lang = "en";
 
@@ -394,4 +393,3 @@ function name() {
     if (count >= Object.keys(names).length) count = 0;
 }
 setInterval(name, 3000)
-bot.login(process.env.BOT_TOKEN)
