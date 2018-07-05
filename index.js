@@ -6,6 +6,8 @@ var os = require('os');
 
 var botname = "AnonBot"
 
+var lang = "en";
+
 var start = Math.round(Date.now() / 1000)
 
 MPP.client.setChannel("lobby")
