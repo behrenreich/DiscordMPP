@@ -299,6 +299,8 @@ MPP.client.on("a", function (msg) {
                 try{
                 sendChat(`Prevents bot from following players. You are not admin (${wot.p.name})`);
                 return;
+            }            catch(e) {
+            return
             }
             if (!input) {
                 sendChat(`Prevents bot from following players.`);
@@ -319,8 +321,6 @@ MPP.client.on("a", function (msg) {
                 sendChat(`Bot will no longer follow: ${user._id} (${user.name})`)
                 do_not_follow.push(user._id)
             }
-            }catch(e) {
-            return
             }
         }
 });
