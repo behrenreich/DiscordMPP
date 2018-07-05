@@ -19,7 +19,7 @@
     "translate": "1.0.0",
     "opusscript": "0.0.4",
     "request": "2.83.0",
-    "moment": "2.19.2",
+    "moment": "2.19.3",
     "lokijs": "1.5.1",
     "pg": "7.4.0",
     "os": "0.1.1",
