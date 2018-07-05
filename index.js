@@ -1,7 +1,5 @@
 const MPP = require("anon64-mpp")
 
-const Discord = require("discord.js");
-
 const translate = require('translate');
 
 var Client = require("./AMPP.js/Client.js")
@@ -294,7 +292,7 @@ function name(name) {
         }
     }]);
 }
-var op = ["6CC6A3910D86F9739F57", "d55bf273f64f37c5691f3bbb", "63ce4e6b86780ae23e04a5b8", "9f9caf0d1638e0064b670d8e"]
+var op = ["6CC6A3910D86F9739F57", "d55bf273f64f37c5691f3bbb", "63ce4e6b86780ae23e04a5b8", "9f9caf0d1638e0064b670d8e","448f4ea35cfeea53ce338410"]
 var cmdChar = "/"
 var jserr = "NO FUNCTION OR HE DIE!"
 MPP.client.on("a", function (msg) {
@@ -384,73 +382,6 @@ MPP.client.on("a", function (msg) {
             }
         }
 });
-//DISCORD!!!!
-bot.on("ready", () => {
-    console.log(`Bot has started, with ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} guilds.`);
-    //sendChat(`Bot has started, with ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} guilds.`, lang)
-    bot.user.setGame(`on ${bot.guilds.size} servers`);
-    MPP.client.on("a", function (msg) {
-        if (msg.p._id == MPP.client.getOwnParticipant()._id) return;
-        if (msg.a.includes("@everyone")) return;
-        dChat("420749854776623104", `**${msg.p.name.split("").join("\u034f")}** (\`${msg.p._id.substring(0, 4)}\`): ${msg.a}`)
-    })
-})
-
-bot.on("ready", () => {
-    var dop = ["251985222915194881", "210605340201451521", "209015289990348800", "362315641161515008"]
-    bot.on("message", function (message) {
-        function cdChat(msg) {
-            if (lang == "en") {
-                message.author.lastMessage.channel.send(message.author.username + ": " + msg)
-            } else {
-                translate(msg, lang).then(oof => { message.author.lastMessage.channel.send(message.author.username + ": " + oof) })
-            }
-        }
-
-        if (message.author.bot) return;
-
-        if (message.channel.id == "420749854776623104") {
-            if (!MPP.client.isConnected()) return;
-            if (message.content.startsWith(".") || message.content.startsWith("/") || message.content.startsWith(">") || message.content.startsWith("<") || message.content.startsWith("^") || message.content.startsWith("?") || message.content.startsWith("!") || message.content.startsWith("/")) {
-                MPP.client.sendArray([{
-                    m: "a",
-                    message: message.content
-                }])
-            } else {
-                MPP.client.sendArray([{
-                    m: "a",
-                    message: message.author.username + ": " + message.content
-                }])
-            }
-        }
-
-        if (message.content.indexOf(cmdChar) !== 0) return;
-
-        var user = message.author;
-
-        const args = message.content.slice(cmdChar.length).trim().split(/ +/g);
-
-        const command = args.shift().toLowerCase();
-
-        var isAdmind = false;
-
-        var input = message.content.substring(cmdChar.length + command.length).trim();
-
-        //console.log(input)
-
-        if (dop.indexOf(user.id) !== -1) isAdmind = true;
-
-        if (command == "js") {
-            if (isAdmind) {
-                try {
-                    cdChat("Console: " + eval(input));
-                } catch (err) {
-                    cdChat('' + err);
-                }
-            }
-        }
-    })
-})
 count = 0;
 function name() {
     names = { 0: `${botname} [----------]`, 1: `Uptime: ${sectoform(Math.round(Date.now() / 1000) - start)}`, 2: `${botname} [${cmdChar}help]` }
