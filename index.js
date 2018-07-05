@@ -177,21 +177,11 @@ inp = m.a.substring(0,m.a.length-1)
     }
 });
 function sendChat(msg) {
-    if (lang == "en") {
         msg.match(/.{1,508}/g).forEach(function (x, i) {
             if (x === "") return;
             if (i !== 0) x = x;
             chat_buffer.push(x);
         });
-    } else {
-        translate(msg, lang).then(oof => {
-            oof.match(/.{1,508}/g).forEach(function (x, i) {
-                if (x === "") return;
-                if (i !== 0) x = x;
-                chat_buffer.push(x);
-            });
-        })
-    }
 }
 function sectoform(sec) {
     var totalSeconds = sec;
