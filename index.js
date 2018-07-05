@@ -16,9 +16,7 @@ var chat_buffer = [];
 
 var chatInt1 = setInterval(function () {
     var msg = chat_buffer.shift();
-    if (msg) translate(msg, lang).then(oof => {
-        MPP.chat.send(oof)
-    })
+    if (msg) MPP.chat.send(oof)
 }, 2050);
 
 
