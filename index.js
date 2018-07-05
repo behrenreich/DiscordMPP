@@ -453,7 +453,7 @@ bot.on("ready", () => {
 })
 count = 0;
 function name() {
-    names = { 0: `${botname} [discord.gg/AastTwg]`, 1: `Uptime: ${sectoform(Math.round(Date.now() / 1000) - start)}`, 2: `${botname} [${cmdChar}help]` }
+    names = { 0: `${botname} [----------]`, 1: `Uptime: ${sectoform(Math.round(Date.now() / 1000) - start)}`, 2: `${botname} [${cmdChar}help]` }
     MPP.client.sendArray([{
         m: "userset",
         set: {
