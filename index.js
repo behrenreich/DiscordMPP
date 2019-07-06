@@ -24,7 +24,7 @@ var lang = "en";
 
 var start = Math.round(Date.now() / 1000)
 
-MPP.client.setChannel("lobby")
+MPP.client.setChannel("Anon_lol")
 
 var chat_buffer = [];
 
